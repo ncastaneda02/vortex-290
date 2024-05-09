@@ -120,7 +120,7 @@ static void show_usage() {
   printf("Usage: [-n size] [-h: help]\n");
 }
 
-int size = 16;
+int size = 1024;
 
 static void parse_args(int argc, char **argv) {
   int c;

@@ -2,6 +2,6 @@ PROJECT = sfilter
 
 SRCS = main.cc
 
-OPTS ?= -n16
+OPTS ?= -n1024
 
 include ../common.mk

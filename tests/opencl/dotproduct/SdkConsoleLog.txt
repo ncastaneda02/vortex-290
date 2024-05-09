@@ -1,0 +1,129 @@
+  # of Devices Available = 1
+  Using Device 0: Vortex Open-Source GPU
+  # of Compute Units = 1
+./dotproduct Starting...
+
+# of float elements per Array 	= 1024
+Global Work Size 		= 1024
+Local Work Size 		= 16
+# of Work Groups 		= 64
+
+Allocate and Init Host Mem...
+WARNING: NVIDIA OpenCL platform not found - defaulting to first platform!
+
+clCreateCommandQueue...
+clCreateBuffer (SrcA, SrcB and Dst in Device GMEM)...
+oclLoadProgSource (kernel.pocl)...
+clCreateProgramWithSource...
+clBuildProgram...
+clCreateKernel (nDotProduct)...
+clSetKernelArg 0 - 3...
+
+clEnqueueWriteBuffer (SrcA and SrcB)...
+clEnqueueNDRangeKernel (DotProduct)...
+clEnqueueReadBuffer (Dst)...
+
+Comparing against Host/C++ computation...
+
+
+    ERROR(epsilon=0.001), i=0, (ref)1.008597 / (data)-26775578.000000 / (diff)26775580.000000
+
+    ERROR(epsilon=0.001), i=1, (ref)0.691528 / (data)49482144.000000 / (diff)49482144.000000
+
+    ERROR(epsilon=0.001), i=2, (ref)1.224199 / (data)236156912.000000 / (diff)236156912.000000
+
+    ERROR(epsilon=0.001), i=3, (ref)0.816214 / (data)173419408.000000 / (diff)173419408.000000
+
+    ERROR(epsilon=0.001), i=4, (ref)0.301427 / (data)537328704.000000 / (diff)537328704.000000
+
+    ERROR(epsilon=0.001), i=5, (ref)0.424943 / (data)-285635872.000000 / (diff)285635872.000000
+
+    ERROR(epsilon=0.001), i=6, (ref)0.518151 / (data)771441.000000 / (diff)771440.500000
+
+    ERROR(epsilon=0.001), i=7, (ref)1.343136 / (data)-216030144.000000 / (diff)216030144.000000
+
+    ERROR(epsilon=0.001), i=8, (ref)1.522871 / (data)-218982160.000000 / (diff)218982160.000000
+
+    ERROR(epsilon=0.001), i=9, (ref)0.643513 / (data)427889760.000000 / (diff)427889760.000000
+
+    ERROR(epsilon=0.001), i=10, (ref)1.591117 / (data)413639648.000000 / (diff)413639648.000000
+
+    ERROR(epsilon=0.001), i=11, (ref)0.922701 / (data)893574912.000000 / (diff)893574912.000000
+
+    ERROR(epsilon=0.001), i=12, (ref)0.434684 / (data)36210104.000000 / (diff)36210104.000000
+
+    ERROR(epsilon=0.001), i=13, (ref)0.870912 / (data)165176304.000000 / (diff)165176304.000000
+
+    ERROR(epsilon=0.001), i=14, (ref)0.160665 / (data)-360059680.000000 / (diff)360059680.000000
+
+    ERROR(epsilon=0.001), i=15, (ref)1.120836 / (data)-519819552.000000 / (diff)519819552.000000
+
+    ERROR(epsilon=0.001), i=16, (ref)1.113664 / (data)76853440.000000 / (diff)76853440.000000
+
+    ERROR(epsilon=0.001), i=17, (ref)1.379299 / (data)643385280.000000 / (diff)643385280.000000
+
+    ERROR(epsilon=0.001), i=18, (ref)1.606643 / (data)205580672.000000 / (diff)205580672.000000
+
+    ERROR(epsilon=0.001), i=19, (ref)1.250501 / (data)303212128.000000 / (diff)303212128.000000
+
+    ERROR(epsilon=0.001), i=20, (ref)0.651118 / (data)94601872.000000 / (diff)94601872.000000
+
+    ERROR(epsilon=0.001), i=21, (ref)1.824262 / (data)-105553768.000000 / (diff)105553768.000000
+
+    ERROR(epsilon=0.001), i=22, (ref)1.635189 / (data)970143872.000000 / (diff)970143872.000000
+
+    ERROR(epsilon=0.001), i=23, (ref)1.271055 / (data)94006536.000000 / (diff)94006536.000000
+
+    ERROR(epsilon=0.001), i=24, (ref)1.839578 / (data)216019696.000000 / (diff)216019696.000000
+
+    ERROR(epsilon=0.001), i=25, (ref)1.824924 / (data)-322639648.000000 / (diff)322639648.000000
+
+    ERROR(epsilon=0.001), i=26, (ref)0.684396 / (data)-421750720.000000 / (diff)421750720.000000
+
+    ERROR(epsilon=0.001), i=27, (ref)1.223871 / (data)-34496376.000000 / (diff)34496376.000000
+
+    ERROR(epsilon=0.001), i=28, (ref)0.091778 / (data)-73882168.000000 / (diff)73882168.000000
+
+    ERROR(epsilon=0.001), i=29, (ref)1.355981 / (data)644685504.000000 / (diff)644685504.000000
+
+    ERROR(epsilon=0.001), i=30, (ref)0.843430 / (data)547345536.000000 / (diff)547345536.000000
+
+    ERROR(epsilon=0.001), i=31, (ref)1.790518 / (data)-339357440.000000 / (diff)339357440.000000
+
+    ERROR(epsilon=0.001), i=32, (ref)1.106295 / (data)-106807680.000000 / (diff)106807680.000000
+
+    ERROR(epsilon=0.001), i=33, (ref)0.757447 / (data)315043136.000000 / (diff)315043136.000000
+
+    ERROR(epsilon=0.001), i=34, (ref)0.592102 / (data)216799280.000000 / (diff)216799280.000000
+
+    ERROR(epsilon=0.001), i=35, (ref)0.172845 / (data)-293419424.000000 / (diff)293419424.000000
+
+    ERROR(epsilon=0.001), i=36, (ref)0.974536 / (data)171984976.000000 / (diff)171984976.000000
+
+    ERROR(epsilon=0.001), i=37, (ref)0.867976 / (data)136037440.000000 / (diff)136037440.000000
+
+    ERROR(epsilon=0.001), i=38, (ref)0.205314 / (data)519008128.000000 / (diff)519008128.000000
+
+    ERROR(epsilon=0.001), i=39, (ref)0.318053 / (data)348974528.000000 / (diff)348974528.000000
+
+    ERROR(epsilon=0.001), i=40, (ref)1.075217 / (data)327663168.000000 / (diff)327663168.000000
+
+    ERROR(epsilon=0.001), i=41, (ref)0.865945 / (data)-203538784.000000 / (diff)203538784.000000
+
+    ERROR(epsilon=0.001), i=42, (ref)0.374065 / (data)58034140.000000 / (diff)58034140.000000
+
+    ERROR(epsilon=0.001), i=43, (ref)1.108448 / (data)478388832.000000 / (diff)478388832.000000
+
+    ERROR(epsilon=0.001), i=44, (ref)1.777102 / (data)221581104.000000 / (diff)221581104.000000
+
+    ERROR(epsilon=0.001), i=45, (ref)1.045839 / (data)385815968.000000 / (diff)385815968.000000
+
+    ERROR(epsilon=0.001), i=46, (ref)1.553292 / (data)164380720.000000 / (diff)164380720.000000
+
+    ERROR(epsilon=0.001), i=47, (ref)0.967794 / (data)46006676.000000 / (diff)46006676.000000
+
+    ERROR(epsilon=0.001), i=48, (ref)0.638463 / (data)-382792800.000000 / (diff)382792800.000000
+
+    Total # of errors = 1024
+Starting Cleanup...
+

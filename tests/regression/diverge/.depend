@@ -1,0 +1,2 @@
+main.o: main.cpp \
+ /home/eecs/nicolas.a.castaneda/vortex2/runtime/include/vortex.h common.h

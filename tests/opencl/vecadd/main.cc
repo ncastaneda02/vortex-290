@@ -68,9 +68,9 @@ cl_kernel kernel = NULL;
 cl_mem a_memobj = NULL;
 cl_mem b_memobj = NULL;
 cl_mem c_memobj = NULL;  
-float *h_a = NULL;
-float *h_b = NULL;
-float *h_c = NULL;
+int *h_a = NULL;
+int *h_b = NULL;
+int *h_c = NULL;
 uint8_t *kernel_bin = NULL;
 
 static void cleanup() {
@@ -89,7 +89,7 @@ static void cleanup() {
   if (h_c) free(h_c);
 }
 
-int size = 64;
+int size = 128;
 
 static void show_usage() {
   printf("Usage: [-n size] [-h: help]\n");
@@ -131,7 +131,7 @@ int main (int argc, char **argv) {
   context = CL_CHECK2(clCreateContext(NULL, 1, &device_id, NULL, NULL,  &_err));
 
   printf("Allocate device buffers\n");
-  size_t nbytes = size * sizeof(float);
+  size_t nbytes = size * sizeof(int);
   a_memobj = CL_CHECK2(clCreateBuffer(context, CL_MEM_READ_ONLY, nbytes, NULL, &_err));
   b_memobj = CL_CHECK2(clCreateBuffer(context, CL_MEM_READ_ONLY, nbytes, NULL, &_err));
   c_memobj = CL_CHECK2(clCreateBuffer(context, CL_MEM_WRITE_ONLY, nbytes, NULL, &_err));
@@ -161,14 +161,14 @@ int main (int argc, char **argv) {
   CL_CHECK(clSetKernelArg(kernel, 2, sizeof(cl_mem), (void *)&c_memobj));
 
   // Allocate memories for input arrays and output arrays.    
-  h_a = (float*)malloc(nbytes);
-  h_b = (float*)malloc(nbytes);
-  h_c = (float*)malloc(nbytes);	
+  h_a = (int*)malloc(nbytes);
+  h_b = (int*)malloc(nbytes);
+  h_c = (int*)malloc(nbytes);	
 	
   // Generate input values
   for (int i = 0; i < size; ++i) {
-    h_a[i] = sinf(i)*sinf(i);
-    h_b[i] = cosf(i)*cosf(i);
+    h_a[i] = i + 1;
+    h_b[i] = i + 1;
   }
 
   // Creating command queue
@@ -180,8 +180,9 @@ int main (int argc, char **argv) {
 
   printf("Execute the kernel\n");
   size_t global_work_size[1] = {size};
+  size_t local_work_size[1] = {size};
   auto time_start = std::chrono::high_resolution_clock::now();
-  CL_CHECK(clEnqueueNDRangeKernel(commandQueue, kernel, 1, NULL, global_work_size, NULL, 0, NULL, NULL));
+  CL_CHECK(clEnqueueNDRangeKernel(commandQueue, kernel, 1, NULL, global_work_size, local_work_size, 0, NULL, NULL));
   CL_CHECK(clFinish(commandQueue));
   auto time_end = std::chrono::high_resolution_clock::now();
   double elapsed = std::chrono::duration_cast<std::chrono::milliseconds>(time_end - time_start).count();
@@ -193,10 +194,10 @@ int main (int argc, char **argv) {
   printf("Verify result\n");
   int errors = 0;
   for (int i = 0; i < size; ++i) {
-    float ref = h_a[i] + h_b[i];
-    if (!almost_equal(h_c[i], ref)) {
+    int ref = h_a[i] + h_b[i];
+    if (h_c[i] != ref) {
       if (errors < 100) 
-        printf("*** error: [%d] expected=%f, actual=%f, a=%f, b=%f\n", i, ref, h_c[i], h_a[i], h_b[i]);
+        printf("*** error: [%d] expected=%d, actual=%d, a=%d, b=%d\n", i, ref, h_c[i], h_a[i], h_b[i]);
       ++errors;
     }
   }

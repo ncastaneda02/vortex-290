@@ -1,4 +1,4 @@
-// Copyright © 2019-2023
+// Copyright Â© 2019-2023
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -170,6 +170,8 @@ void vx_spawn_tasks(int num_tasks, vx_spawn_tasks_cb callback , void * arg) {
 
 static void __attribute__ ((noinline)) spawn_kernel_all_stub() {
   int NT  = vx_num_threads();
+  int nW = vx_num_warps();
+  int nC = vx_num_cores();
   int cid = vx_core_id();
   int wid = vx_warp_id();
   int tid = vx_thread_id();
@@ -178,26 +180,34 @@ static void __attribute__ ((noinline)) spawn_kernel_all_stub() {
 
   int wK = (p_wspawn_args->NWs * wid) + MIN(p_wspawn_args->RWs, wid);
   int tK = p_wspawn_args->NWs + (wid < p_wspawn_args->RWs);
-  int offset = p_wspawn_args->offset + (wK * NT) + (tid * tK);
+  int offset = p_wspawn_args->offset + (wid * NT) + tid;
 
   int X = p_wspawn_args->ctx->num_groups[0];
   int Y = p_wspawn_args->ctx->num_groups[1];
-  int XY = X * Y;
-
+  int Z = p_wspawn_args->ctx->num_groups[2];
+  // total number of tasks
+  int l1 = p_wspawn_args->ctx->local_size[0];
+  int l2 = p_wspawn_args->ctx->local_size[1];
+  int l3 = p_wspawn_args->ctx->local_size[2];
+  int g1 = X * l1;
+  int g2 = Y * l2;
+  int g3 = Z * l3;
+  int num_work_items = g1 * g2 * g3;
+  int XY = g1 * g2;
   if (p_wspawn_args->isXYpow2) {
-    for (int wg_id = offset, N = wg_id + tK; wg_id < N; ++wg_id) {    
+    for (int wg_id = offset, N = offset + (num_work_items / nC); wg_id < N; wg_id += NT*nW ) {
       int k = wg_id >> p_wspawn_args->log2XY;
       int wg_2d = wg_id - k * XY;
       int j = wg_2d >> p_wspawn_args->log2X;
-      int i = wg_2d - j * X;
+      int i = wg_2d - j * g1;
       (p_wspawn_args->callback)(p_wspawn_args->arg, p_wspawn_args->ctx, i, j, k);
     }
   } else {
-    for (int wg_id = offset, N = wg_id + tK; wg_id < N; ++wg_id) {    
+    for (int wg_id = offset, N = num_work_items; wg_id < N; wg_id += NT*nW ) {
       int k = wg_id / XY;
       int wg_2d = wg_id - k * XY;
-      int j = wg_2d / X;
-      int i = wg_2d - j * X;
+      int j = wg_2d / g1;
+      int i = wg_2d - j * g1;
       (p_wspawn_args->callback)(p_wspawn_args->arg, p_wspawn_args->ctx, i, j, k);
     }
   }
@@ -206,6 +216,7 @@ static void __attribute__ ((noinline)) spawn_kernel_all_stub() {
 static void __attribute__ ((noinline)) spawn_kernel_rem_stub() {
   int cid = vx_core_id();
   int tid = vx_thread_id();
+  int wid = vx_warp_id();
 
   wspawn_kernel_args_t* p_wspawn_args = (wspawn_kernel_args_t*)g_wspawn_args[cid];
 
@@ -213,19 +224,28 @@ static void __attribute__ ((noinline)) spawn_kernel_rem_stub() {
 
   int X = p_wspawn_args->ctx->num_groups[0];
   int Y = p_wspawn_args->ctx->num_groups[1];
+  int Z = p_wspawn_args->ctx->num_groups[2];
   int XY = X * Y;
+  // total number of tasks
+  int l1 = p_wspawn_args->ctx->local_size[0];
+  int l2 = p_wspawn_args->ctx->local_size[1];
+  int l3 = p_wspawn_args->ctx->local_size[2];
+  int g1 = X * l1;
+  int g2 = Y * l2;
+  int g3 = Z * l2;
+  int num_work_items = g1 * g2 * g3;
 
   if (p_wspawn_args->isXYpow2) {
-    int k = wg_id >> p_wspawn_args->log2XY;
-    int wg_2d = wg_id - k * XY;
+    int i = wg_id >> p_wspawn_args->log2XY;
+    int wg_2d = wg_id - i * XY;
     int j = wg_2d >> p_wspawn_args->log2X;
-    int i = wg_2d - j * X;
+    int k = wg_2d - j * X;
     (p_wspawn_args->callback)(p_wspawn_args->arg, p_wspawn_args->ctx, i, j, k);
   } else {
-    int k = wg_id / XY;
-    int wg_2d = wg_id - k * XY;
+    int i = wg_id / XY;
+    int wg_2d = wg_id - i * XY;
     int j = wg_2d / X;
-    int i = wg_2d - j * X;
+    int k = wg_2d - j * X;
     (p_wspawn_args->callback)(p_wspawn_args->arg, p_wspawn_args->ctx, i, j, k);
   }
 }
@@ -248,6 +268,15 @@ void vx_spawn_kernel(context_t * ctx, vx_spawn_kernel_cb callback, void * arg) {
   int Z  = ctx->num_groups[2];
   int XY = X * Y;
   int num_tasks = XY * Z;
+
+  // total number of tasks
+  int l1 = ctx->local_size[0];
+  int l2 = ctx->local_size[1];
+  int l3 = ctx->local_size[2];
+  int g1 = X * l1;
+  int g2 = Y * l2;
+  int g3 = Z * l3;
+  int num_work_items = g1 * g2 * g3;
   
   // device specs
   int NC = vx_num_cores();
@@ -261,21 +290,21 @@ void vx_spawn_kernel(context_t * ctx, vx_spawn_kernel_cb callback, void * arg) {
 
   // calculate necessary active cores
   int WT = NW * NT;
-  int nC = (num_tasks > WT) ? (num_tasks / WT) : 1;
+  int nC = (num_work_items > WT) ? (num_work_items / WT) : 1;
   int nc = MIN(nC, NC);
   if (core_id >= nc)
     return; // terminate extra cores
 
   // number of tasks per core
-  int tasks_per_core = num_tasks / nc;
+  int tasks_per_core = num_work_items / nc;
   int tasks_per_core_n1 = tasks_per_core;  
   if (core_id == (nc-1)) {    
-    int rem = num_tasks - (nc * tasks_per_core); 
+    int rem = num_work_items - (nc * tasks_per_core); 
     tasks_per_core_n1 += rem; // last core also executes remaining WGs
   }
 
   // number of tasks per warp
-  int TW = tasks_per_core_n1 / NT;      // occupied warps
+  int TW = num_work_items / NT;      // occupied warps
   int rT = tasks_per_core_n1 - TW * NT; // remaining threads
   int fW = 1, rW = 0;
   if (TW >= NW) {
@@ -284,9 +313,9 @@ void vx_spawn_kernel(context_t * ctx, vx_spawn_kernel_cb callback, void * arg) {
   }
 
   // fast path handling
-  char isXYpow2 = is_log2(XY);
-  char log2XY   = log2_fast(XY);
-  char log2X    = log2_fast(X);
+  char isXYpow2 = is_log2(g1 * g2);
+  char log2XY   = log2_fast(g1 * g2);
+  char log2X    = log2_fast(g1);
 
   wspawn_kernel_args_t wspawn_args = { 
     ctx, callback, arg, core_id * tasks_per_core, fW, rW, isXYpow2, log2XY, log2X
@@ -304,7 +333,7 @@ void vx_spawn_kernel(context_t * ctx, vx_spawn_kernel_cb callback, void * arg) {
     // call stub routine
     asm volatile("" ::: "memory");
     spawn_kernel_all_stub();
-
+    
     // back to single-threaded
     vx_tmc_one();
     
@@ -312,7 +341,7 @@ void vx_spawn_kernel(context_t * ctx, vx_spawn_kernel_cb callback, void * arg) {
     vx_wspawn_wait();
 	}  
 
-  if (rT != 0) {
+  if (rT > 0) {
     // adjust offset
     wspawn_args.offset += (tasks_per_core_n1 - rT);
 

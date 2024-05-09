@@ -1,0 +1,88 @@
+digraph sgemm2 {
+	subgraph cluster0 {
+BB0x5602003e6660[shape=rect,style=solid,color=red,style=filled,label="entry:\n...program instructions...\nbranch\n"];
+
+BB0x5602003e1810[shape=rect,style=solid,label="entry.r_entry:\nbranch\n"];
+
+BB0x560200354120[shape=rect,style=solid,label="for.cond.cleanup.loopexit:\n...program instructions...\nbranch\n"];
+
+BB0x5602003fbd90[shape=rect,style=solid,label="for.cond.cleanup.r_exit:\nbranch\n"];
+
+BB0x56020037f9c0[shape=rect,style=solid,label="for.cond.cleanup:\n...program instructions...\nbranch\n"];
+
+BB0x56020043a5a0[shape=rect,style=solid,color=red,style=filled,label="for.cond.cleanup18.postbarrier:\n...program instructions...\nbranch\n"];
+
+label="Parallel region #0";
+}
+BB0x560200312a80[shape=rect,style=dotted,label="entry.barrier:\nBARRIER\nbranch\n"];
+
+BB0x56020096ade0[shape=rect,style=solid,label="for.body.lr.ph:\n...program instructions...\nbranch\n"];
+
+BB0x5602003e66b0[shape=rect,style=dotted,label="exit.barrier:\nBARRIER\nRETURN\n"];
+
+BB0x560201da6d70[shape=rect,style=solid,label="for.body.prebarrier:\n...program instructions...\nbranch\n"];
+
+BB0x56020048b290[shape=rect,style=dotted,label="for.body:\nBARRIER\nbranch\n"];
+
+BB0x56020048b1d0[shape=rect,style=solid,label="for.body.postbarrier:\n...program instructions...\nbranch\n"];
+
+BB0x560200315f70[shape=rect,style=solid,label="for.body.r_entry1:\nbranch\n"];
+
+BB0x560200315fe0[shape=rect,style=solid,label="for.body.r_entry:\nbranch\n"];
+
+BB0x5602009a6170[shape=rect,style=solid,label="for.body19.preheader:\n...program instructions...\nbranch\n"];
+
+BB0x5602003540d0[shape=rect,style=solid,label="for.cond.cleanup18.loopexit:\n...program instructions...\nbranch\n"];
+
+BB0x56020064f160[shape=rect,style=solid,label="for.cond.cleanup18.r_exit:\nbranch\n"];
+
+BB0x5602003fbd10[shape=rect,style=solid,label="for.cond.cleanup18.prebarrier:\n...program instructions...\nbranch\n"];
+
+BB0x56020048b110[shape=rect,style=dotted,label="for.cond.cleanup18:\nBARRIER\nbranch\n"];
+
+BB0x560200315ef0[shape=rect,style=solid,label="for.body19:\n...program instructions...\nbranch\n"];
+
+BB0x560200312a80 -> BB0x5602003e6660;
+
+BB0x5602003e6660 -> BB0x5602003e1810;
+
+BB0x5602003e1810 -> BB0x5602003fbd90;
+BB0x5602003e1810 -> BB0x56020096ade0;
+
+BB0x56020096ade0 -> BB0x560201da6d70;
+
+BB0x560200354120 -> BB0x5602003fbd90;
+
+BB0x5602003fbd90 -> BB0x56020037f9c0;
+
+BB0x56020037f9c0 -> BB0x5602003e66b0;
+
+
+BB0x560201da6d70 -> BB0x56020048b290;
+
+BB0x56020048b290 -> BB0x56020048b1d0;
+
+BB0x56020048b1d0 -> BB0x560200315f70;
+
+BB0x560200315f70 -> BB0x560200315fe0;
+
+BB0x560200315fe0 -> BB0x5602009a6170;
+BB0x560200315fe0 -> BB0x56020064f160;
+
+BB0x5602009a6170 -> BB0x560200315ef0;
+
+BB0x5602003540d0 -> BB0x56020064f160;
+
+BB0x56020064f160 -> BB0x5602003fbd10;
+
+BB0x5602003fbd10 -> BB0x56020048b110;
+
+BB0x56020048b110 -> BB0x56020043a5a0;
+
+BB0x56020043a5a0 -> BB0x560201da6d70;
+BB0x56020043a5a0 -> BB0x560200354120;
+
+BB0x560200315ef0 -> BB0x5602003540d0;
+BB0x560200315ef0 -> BB0x560200315ef0;
+
+}

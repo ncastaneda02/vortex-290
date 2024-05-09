@@ -1,0 +1,8 @@
+./transpose Starting...
+
+WARNING: NVIDIA OpenCL platform not found - defaulting to first platform!
+
+Device 0: Vortex Open-Source GPU
+
+Processing a 64 by 64 matrix of floats...
+

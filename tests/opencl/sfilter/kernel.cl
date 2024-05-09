@@ -4,8 +4,8 @@
 __kernel void sfilter(__global float *src, __global float *dst, long ldc,
   float m0, float m1, float m2, float m3, float m4, float m5, float m6, float m7, float m8)
 {
-  long x = get_global_id(0);
-  long y = get_global_id(1);
+  int x = get_group_id(0) + 1;
+  int y = get_group_id(1) + 1;
 
   int addr = x + y * ldc;
   

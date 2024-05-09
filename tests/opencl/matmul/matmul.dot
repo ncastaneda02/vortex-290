@@ -1,0 +1,99 @@
+digraph matmul {
+	subgraph cluster2 {
+BB0x5562e5af4f30[shape=rect,style=solid,color=red,style=filled,label="entry:\n...program instructions...\nbranch\n"];
+
+BB0x5562e5af49c0[shape=rect,style=solid,label="entry.r_entry:\nbranch\n"];
+
+BB0x5562e5cf1cd0[shape=rect,style=solid,label="for.body.lr.ph:\n...program instructions...\nbranch\n"];
+
+BB0x5562e6094420[shape=rect,style=solid,label="for.body.prebarrier:\n...program instructions...\nbranch\n"];
+
+BB0x5562e5cfa2a0[shape=rect,style=solid,color=red,style=filled,label="for.cond.cleanup21.postbarrier:\n...program instructions...\nbranch\n"];
+
+label="Parallel region #2";
+}
+BB0x5562e5c15390[shape=rect,style=dotted,label="entry.barrier:\nBARRIER\nbranch\n"];
+
+BB0x5562e5d6b1f0[shape=rect,style=solid,label="for.cond.cleanup.loopexit:\n...program instructions...\nbranch\n"];
+
+BB0x5562e5a0fff0[shape=rect,style=solid,label="for.cond.cleanup.r_exit:\nbranch\n"];
+
+BB0x5562e5a1f3b0[shape=rect,style=solid,label="for.cond.cleanup:\n...program instructions...\nbranch\n"];
+
+BB0x5562e5cfa0e0[shape=rect,style=dotted,label="exit.barrier:\nBARRIER\nRETURN\n"];
+
+BB0x5562e5cfa520[shape=rect,style=dotted,label="for.body:\nBARRIER\nbranch\n"];
+
+BB0x5562e5cfa460[shape=rect,style=solid,label="for.body.postbarrier:\n...program instructions...\nbranch\n"];
+
+BB0x5562e5b0ddc0[shape=rect,style=solid,label="for.body.r_entry1:\nbranch\n"];
+
+BB0x5562e5b0de30[shape=rect,style=solid,label="for.body.r_entry:\nbranch\n"];
+
+BB0x5562e5a65790[shape=rect,style=solid,label="for.body22.preheader:\n...program instructions...\nbranch\n"];
+
+BB0x5562e5d63180[shape=rect,style=solid,label="for.cond.cleanup21.loopexit:\n...program instructions...\nbranch\n"];
+
+BB0x5562e5b4b550[shape=rect,style=solid,label="for.cond.cleanup21.r_exit:\nbranch\n"];
+
+BB0x5562e5a0ff70[shape=rect,style=solid,label="for.cond.cleanup21.prebarrier:\n...program instructions...\nbranch\n"];
+
+BB0x5562e5cfa360[shape=rect,style=dotted,label="for.cond.cleanup21:\nBARRIER\nbranch\n"];
+
+BB0x5562e5a10040[shape=rect,style=solid,label="for.body22:\n...program instructions...\nbranch\n"];
+
+BB0x5562e5af50a0[shape=rect,style=solid,label="for.cond.cleanup.r_exit.btr:\nbranch\n"];
+
+BB0x5562e5afe430[shape=rect,style=solid,label="for.cond.cleanup.btr:\n...program instructions...\nbranch\n"];
+
+BB0x5562e5cfa1a0[shape=rect,style=dotted,label="exit.barrier2:\nBARRIER\nRETURN\n"];
+
+BB0x5562e5c15390 -> BB0x5562e5af4f30;
+
+BB0x5562e5af4f30 -> BB0x5562e5af49c0;
+
+BB0x5562e5af49c0 -> BB0x5562e5a0fff0;
+BB0x5562e5af49c0 -> BB0x5562e5cf1cd0;
+
+BB0x5562e5cf1cd0 -> BB0x5562e6094420;
+
+BB0x5562e5d6b1f0 -> BB0x5562e5af50a0;
+
+BB0x5562e5a0fff0 -> BB0x5562e5a1f3b0;
+
+BB0x5562e5a1f3b0 -> BB0x5562e5cfa0e0;
+
+
+BB0x5562e6094420 -> BB0x5562e5cfa520;
+
+BB0x5562e5cfa520 -> BB0x5562e5cfa460;
+
+BB0x5562e5cfa460 -> BB0x5562e5b0ddc0;
+
+BB0x5562e5b0ddc0 -> BB0x5562e5b0de30;
+
+BB0x5562e5b0de30 -> BB0x5562e5a65790;
+BB0x5562e5b0de30 -> BB0x5562e5b4b550;
+
+BB0x5562e5a65790 -> BB0x5562e5a10040;
+
+BB0x5562e5d63180 -> BB0x5562e5b4b550;
+
+BB0x5562e5b4b550 -> BB0x5562e5a0ff70;
+
+BB0x5562e5a0ff70 -> BB0x5562e5cfa360;
+
+BB0x5562e5cfa360 -> BB0x5562e5cfa2a0;
+
+BB0x5562e5cfa2a0 -> BB0x5562e6094420;
+BB0x5562e5cfa2a0 -> BB0x5562e5d6b1f0;
+
+BB0x5562e5a10040 -> BB0x5562e5d63180;
+BB0x5562e5a10040 -> BB0x5562e5a10040;
+
+BB0x5562e5af50a0 -> BB0x5562e5afe430;
+
+BB0x5562e5afe430 -> BB0x5562e5cfa1a0;
+
+
+}

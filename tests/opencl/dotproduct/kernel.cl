@@ -1,21 +1,15 @@
 __kernel void DotProduct (__global float* a, __global float* b, __global float* c, int iNumElements)
 {
     // find position in global arrays
-    int iGID = get_global_id(0);
+    int  iGID = get_group_id(0);
+    int seed  = iGID;
 
-    // bound check (equivalent to the limit on a 'for' loop for standard/serial C code
-    //printf("%d, %d\n", iGID, iNumElements);
-    if (iGID >= iNumElements)
-    {   
-        return; 
+    for (int i = 0; i < 1000; i++) {
+        int c = iGID ^ (iGID << 11);
+        int r = 27 ^ (c >> 7);
+        iGID += r;
     }
-
-    // process 
-    int iInOffset = iGID << 2;
-    c[iGID] = a[iInOffset] * b[iInOffset] 
-               + a[iInOffset + 1] * b[iInOffset + 1]
-               + a[iInOffset + 2] * b[iInOffset + 2]
-               + a[iInOffset + 3] * b[iInOffset + 3];
+    c[seed] = iGID;
     //float cc = c[iGID];
 
     //printf("c[%d]=%f\n", iGID, cc);

@@ -1,5 +1,5 @@
 XLEN ?= 32
-TOOLDIR ?= /opt
+TOOLDIR ?= /home/eecs/nicolas.a.castaneda/vortex-toolchain-prebuilt
 
 ifeq ($(XLEN),64)
 RISCV_TOOLCHAIN_PATH ?= $(TOOLDIR)/riscv64-gnu-toolchain

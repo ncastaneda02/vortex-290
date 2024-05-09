@@ -4,8 +4,9 @@ __kernel void conv3x3(__global float* output,
                       const int width, 
                       const int height) 
 {
-    int x = get_global_id(0);
-    int y = get_global_id(1);
+    int x = get_group_id(0);
+    int y = get_group_id(1);
+    // printf("Coord: %d, %d\n", x, y);
 
     // Adjust for padded borders
     int paddedWidth = width + 2;

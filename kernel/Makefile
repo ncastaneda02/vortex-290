@@ -1,5 +1,5 @@
 XLEN ?= 32
-TOOLDIR ?= /opt
+TOOLDIR ?= /home/eecs/nicolas.a.castaneda/vortex-toolchain-prebuilt
 
 ifeq ($(XLEN),64)
 RISCV_TOOLCHAIN_PATH ?= $(TOOLDIR)/riscv64-gnu-toolchain
@@ -12,7 +12,7 @@ endif
 RISCV_PREFIX ?= riscv$(XLEN)-unknown-elf
 RISCV_SYSROOT ?= $(RISCV_TOOLCHAIN_PATH)/$(RISCV_PREFIX)
 
-LLVM_VORTEX ?= $(TOOLDIR)/llvm-vortex
+LLVM_VORTEX ?= /scratch/nicolas.a.castaneda/build/llvm-vortex
 
 LLVM_CFLAGS += --sysroot=$(RISCV_SYSROOT)
 LLVM_CFLAGS += --gcc-toolchain=$(RISCV_TOOLCHAIN_PATH)

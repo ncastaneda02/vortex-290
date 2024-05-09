@@ -1,0 +1,4 @@
+main.o: main.cc \
+ /scratch/nicolas.a.castaneda/build/pocl2/runtime/include/CL/cl.h \
+ /scratch/nicolas.a.castaneda/build/pocl2/runtime/include/CL/cl_version.h \
+ /scratch/nicolas.a.castaneda/build/pocl2/runtime/include/CL/cl_platform.h

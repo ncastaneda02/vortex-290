@@ -1,6 +1,6 @@
 XLEN ?= 32
 
-TOOLDIR ?= /opt
+TOOLDIR ?= /home/eecs/nicolas.a.castaneda/vortex-toolchain-prebuilt
 
 TARGET ?= opaesim
 
@@ -25,7 +25,7 @@ VORTEX_KN_PATH ?= $(realpath ../../../kernel)
 
 FPGA_BIN_DIR ?= $(VORTEX_RT_PATH)/opae
 
-LLVM_VORTEX ?= $(TOOLDIR)/llvm-vortex
+LLVM_VORTEX ?=/scratch/nicolas.a.castaneda/build/llvm-vortex
 
 LLVM_CFLAGS += --sysroot=$(RISCV_SYSROOT)
 LLVM_CFLAGS += --gcc-toolchain=$(RISCV_TOOLCHAIN_PATH)

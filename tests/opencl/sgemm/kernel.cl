@@ -6,8 +6,8 @@ __kernel void sgemm (__global const TYPE *A,
                      int N)
 {
   // Thread identifiers
-  const int r = get_global_id(0); // Row ID
-  const int c = get_global_id(1); // Col ID
+  const int r = get_group_id(0); // Row ID
+  const int c = get_group_id(1); // Col ID
 
   // Compute a single element (loop a K)
   TYPE acc = 0;

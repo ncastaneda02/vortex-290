@@ -1,0 +1,1040 @@
+g++ -std=c++11 -Wall -Wextra -Wfatal-errors -Wno-deprecated-declarations -Wno-unused-parameter -Wno-narrowing -pthread -I/scratch/nicolas.a.castaneda/build/pocl2/runtime/include -O2 -DNDEBUG -MM main.cc > .depend;
+g++ -std=c++11 -Wall -Wextra -Wfatal-errors -Wno-deprecated-declarations -Wno-unused-parameter -Wno-narrowing -pthread -I/scratch/nicolas.a.castaneda/build/pocl2/runtime/include -O2 -DNDEBUG -c main.cc -o main.cc.o
+In file included from /scratch/nicolas.a.castaneda/build/pocl2/runtime/include/CL/cl.h:20,
+                 from /scratch/nicolas.a.castaneda/build/pocl2/runtime/include/CL/opencl.h:24,
+                 from main.cc:5:
+/scratch/nicolas.a.castaneda/build/pocl2/runtime/include/CL/cl_version.h:22:104: note: #pragma message: cl_version.h: CL_TARGET_OPENCL_VERSION is not defined. Defaulting to 300 (OpenCL 3.0)
+   22 | #pragma message("cl_version.h: CL_TARGET_OPENCL_VERSION is not defined. Defaulting to 300 (OpenCL 3.0)")
+      |                                                                                                        ^
+main.cc:55:13: warning: ‘bool almost_equal(float, float, int)’ defined but not used [-Wunused-function]
+   55 | static bool almost_equal(float a, float b, int ulp = 4) {
+      |             ^~~~~~~~~~~~
+g++ -std=c++11 -Wall -Wextra -Wfatal-errors -Wno-deprecated-declarations -Wno-unused-parameter -Wno-narrowing -pthread -I/scratch/nicolas.a.castaneda/build/pocl2/runtime/include -O2 -DNDEBUG main.cc.o -L/home/eecs/nicolas.a.castaneda/vortex2/runtime/stub -lvortex /scratch/nicolas.a.castaneda/build/pocl2/runtime/lib/libOpenCL.so -o vecadd
+LD_LIBRARY_PATH=/scratch/nicolas.a.castaneda/build/llvm-vortex/lib:/scratch/nicolas.a.castaneda/build/pocl2/compiler/lib:/scratch/nicolas.a.castaneda/build/llvm-vortex/lib:/usr/local/cuda-12.2/lib64:/usr/local/cuda-12.2/lib64:/usr/local/cuda-12.2/lib64: LLVM_PREFIX=/scratch/nicolas.a.castaneda/build/llvm-vortex POCL_DEBUG=all POCL_VORTEX_CFLAGS="-march=rv32imaf -mabi=ilp32f -v -O3 --sysroot=/home/eecs/nicolas.a.castaneda/vortex-toolchain-prebuilt/riscv-gnu-toolchain/riscv32-unknown-elf --gcc-toolchain=/home/eecs/nicolas.a.castaneda/vortex-toolchain-prebuilt/riscv-gnu-toolchain -Xclang -target-feature -Xclang +vortex -fno-rtti -fno-exceptions -nostartfiles -fdata-sections -ffunction-sections -I/home/eecs/nicolas.a.castaneda/vortex2/kernel/include -DNDEBUG -DLLVM_VOTEX" POCL_VORTEX_LDFLAGS="-Wl,-Bstatic,--gc-sections,-T/home/eecs/nicolas.a.castaneda/vortex2/kernel/linker/vx_link32.ld,--defsym=STARTUP_ADDR=0x80000000 /home/eecs/nicolas.a.castaneda/vortex2/kernel/libvortexrt.a -lm" /scratch/nicolas.a.castaneda/build/pocl2/compiler/bin/poclcc -o kernel.pocl kernel.cl
+** Final POCL_DEBUG flags: FFFFFFFFFFFFFFFF 
+[2024-04-22 22:34:40.353344448] POCL: in fn pocl_install_sigfpe_handler at line 265:
+  *** INFO ***  |   GENERAL |  Installing SIGFPE handler...
+[2024-04-22 22:34:40.353884196] POCL: in fn pocl_vortex_init at line 276:
+  *** WARNING ***  |   WARNING |  INIT dlcache DOTO delete
+[2024-04-22 22:34:40.353975187] POCL: in fn pocl_vortex_init at line 297:
+  *** WARNING ***  |   WARNING |  GLOBAL_MEM_SIZE  : -1073741824
+[2024-04-22 22:34:40.355345004] POCL: in fn POclCreateCommandQueue at line 103:
+  *** INFO ***  |   GENERAL |  Created Command Queue 3 (0x55822523cc00) on device 0
+[2024-04-22 22:34:40.355426287] POCL: in fn void pocl_llvm_create_context(cl_context) at line 436:
+  *** INFO ***  |      LLVM |  Created context 2 (0x55822523bfc0)
+[2024-04-22 22:34:40.355429973] POCL: in fn POclCreateContext at line 232:
+  *** INFO ***  |   GENERAL |  Created Context 2 (0x55822523bfc0)
+[2024-04-22 22:34:40.355440342] POCL: in fn POclRetainContext at line 32:
+  *** INFO ***  | REFCOUNTS |  Retain Context 2 (0x55822523bfc0), Refcount: 2
+[2024-04-22 22:34:40.355444031] POCL: in fn compile_and_link_program at line 793:
+  *** INFO ***  |      LLVM |  building program with options (null)
+[2024-04-22 22:34:40.355446763] POCL: in fn compile_and_link_program at line 830:
+  *** INFO ***  |      LLVM |  building program for 1 devs with options (null)
+[2024-04-22 22:34:40.355448951] POCL: in fn compile_and_link_program at line 834:
+  *** INFO ***  |      LLVM |     BUILDING for device: Vortex
+[2024-04-22 22:34:40.355458488] POCL: in fn pocl_driver_build_source at line 712:
+  *** INFO ***  |      LLVM |  building from sources for device 0
+[2024-04-22 22:34:40.355678532] POCL: in fn int pocl_llvm_build_program(cl_program, unsigned int, cl_uint, _cl_program* const*, const char**, int) at line 425:
+  *** INFO ***  |      LLVM |  all build options: -Dcl_khr_int64 -DPOCL_DEVICE_ADDRESS_BITS=32 -D__USE_CLANG_OPENCL_C_H -xcl -Dinline= -I. -cl-kernel-arg-info -opaque-pointers  -D__ENDIAN_LITTLE__=1 -D__IMAGE_SUPPORT__=1 -DCL_DEVICE_MAX_GLOBAL_VARIABLE_SIZE=0 -D__OPENCL_VERSION__=300 -cl-std=CL3.0 -D__OPENCL_C_VERSION__=300 -Dcl_khr_byte_addressable_store=1 -Dcl_khr_global_int32_base_atomics=1 -Dcl_khr_global_int32_extended_atomics=1 -Dcl_khr_local_int32_base_atomics=1 -Dcl_khr_local_int32_extended_atomics=1 -D__opencl_c_images=1 -cl-ext=-all,+cl_khr_byte_addressable_store,+cl_khr_global_int32_base_atomics,+cl_khr_global_int32_extended_atomics,+cl_khr_local_int32_base_atomics,+cl_khr_local_int32_extended_atomics,+__opencl_c_images -fno-builtin -triple=riscv32 -target-feature +m -target-feature +f -target-feature +vortex -target-abi ilp32f
+[2024-04-22 22:34:43.117689949] POCL: in fn llvm::Module* getKernelLibrary(cl_device_id, PoclLLVMContextData*) at line 1088:
+  *** INFO ***  |      LLVM |  Using /scratch/nicolas.a.castaneda/build/pocl2/compiler/lib/../share/pocl/kernel-riscv32.bc as the built-in lib.
+[2024-04-22 22:34:44.744455690] POCL: in fn int pocl_llvm_build_program(cl_program, unsigned int, cl_uint, _cl_program* const*, const char**, int) at line 766:
+  *** INFO ***  |      LLVM |  Writing program.bc to /home/eecs/nicolas.a.castaneda/.cache/pocl/kcache/LC/GBGPBFMNDJDMBBBLBDOEKIFEMMAACFDCFMIKM/program.bc.
+[2024-04-22 22:34:44.884711803] POCL: in fn int pocl_llvm_generate_workgroup_function_nowrite(unsigned int, cl_device_id, cl_kernel, _cl_command_node*, void**, int) at line 756:
+  *** INFO ***  |    TIMING |       >>>       127.326  ms    API: llvm_workgroup_ir_func_gen
+[2024-04-22 22:34:44.888256041] POCL: in fn llvm_codegen at line 535:
+  *** INFO ***  |      LLVM |  Writing parallel.bc to /home/eecs/nicolas.a.castaneda/.cache/pocl/kcache/LC/GBGPBFMNDJDMBBBLBDOEKIFEMMAACFDCFMIKM/vecadd/0-0-0/parallel.bc.
+[2024-04-22 22:34:44.903195232] POCL: in fn int pocl_llvm_build_vortex_program(cl_kernel, unsigned int, cl_device_id, const char*, const char*, char*) at line 100:
+  *** INFO ***  |   GENERAL |  using $LLVM_PREFIX=/scratch/nicolas.a.castaneda/build/llvm-vortex!
+[2024-04-22 22:34:44.903213806] POCL: in fn int pocl_llvm_build_vortex_program(cl_kernel, unsigned int, cl_device_id, const char*, const char*, char*) at line 111:
+  *** INFO ***  |      LLVM |  running "/scratch/nicolas.a.castaneda/build/llvm-vortex/bin/clang -march=rv32imaf -mabi=ilp32f -v -O3 --sysroot=/home/eecs/nicolas.a.castaneda/vortex-toolchain-prebuilt/riscv-gnu-toolchain/riscv32-unknown-elf --gcc-toolchain=/home/eecs/nicolas.a.castaneda/vortex-toolchain-prebuilt/riscv-gnu-toolchain -Xclang -target-feature -Xclang +vortex -fno-rtti -fno-exceptions -nostartfiles -fdata-sections -ffunction-sections -I/home/eecs/nicolas.a.castaneda/vortex2/kernel/include -DNDEBUG -DLLVM_VOTEX /home/eecs/nicolas.a.castaneda/.cache/pocl/kcache/LC/GBGPBFMNDJDMBBBLBDOEKIFEMMAACFDCFMIKM/vecadd/0-0-0/parallel.bc -c -o /home/eecs/nicolas.a.castaneda/.cache/pocl/kcache/tempfile_bNkEx5.so.o"
+clang version 16.0.6 (https://github.com/vortexgpgpu/llvm 58811bfa61a503fd4a5f0dc7b57802fae51c3f5d)
+Target: riscv32-unknown-unknown-elf
+Thread model: posix
+InstalledDir: /scratch/nicolas.a.castaneda/build/llvm-vortex/bin
+Found candidate GCC installation: /home/eecs/nicolas.a.castaneda/vortex-toolchain-prebuilt/riscv-gnu-toolchain/lib/gcc/riscv32-unknown-elf/12.2.0
+Selected GCC installation: /home/eecs/nicolas.a.castaneda/vortex-toolchain-prebuilt/riscv-gnu-toolchain/lib/gcc/riscv32-unknown-elf/12.2.0
+clang-16: warning: argument unused during compilation: '-nostartfiles' [-Wunused-command-line-argument]
+clang-16: warning: argument unused during compilation: '-I /home/eecs/nicolas.a.castaneda/vortex2/kernel/include' [-Wunused-command-line-argument]
+ (in-process)
+ "/scratch/nicolas.a.castaneda/build/llvm-vortex/bin/clang-16" -cc1 -triple riscv32-unknown-unknown-elf -emit-obj -disable-free -clear-ast-before-backend -main-file-name parallel.bc -mrelocation-model static -mframe-pointer=none -fmath-errno -ffp-contract=on -fno-rounding-math -mconstructor-aliases -nostdsysteminc -target-cpu generic-rv32 -target-feature +m -target-feature +a -target-feature +f -target-feature -e -target-feature -d -target-feature -c -target-feature -h -target-feature -zihintpause -target-feature -zfhmin -target-feature -zfh -target-feature -zfinx -target-feature -zdinx -target-feature -zhinxmin -target-feature -zhinx -target-feature -zba -target-feature -zbb -target-feature -zbc -target-feature -zbs -target-feature -zbkb -target-feature -zbkc -target-feature -zbkx -target-feature -zknd -target-feature -zkne -target-feature -zknh -target-feature -zksed -target-feature -zksh -target-feature -zkr -target-feature -zkn -target-feature -zks -target-feature -zkt -target-feature -zk -target-feature -zmmul -target-feature -v -target-feature -zvl32b -target-feature -zvl64b -target-feature -zvl128b -target-feature -zvl256b -target-feature -zvl512b -target-feature -zvl1024b -target-feature -zvl2048b -target-feature -zvl4096b -target-feature -zvl8192b -target-feature -zvl16384b -target-feature -zvl32768b -target-feature -zvl65536b -target-feature -zve32x -target-feature -zve32f -target-feature -zve64x -target-feature -zve64f -target-feature -zve64d -target-feature -zicbom -target-feature -zicboz -target-feature -zicbop -target-feature -svnapot -target-feature -svpbmt -target-feature -svinval -target-feature -xventanacondops -target-feature -xtheadvdot -target-feature -experimental-zihintntl -target-feature -experimental-zca -target-feature -experimental-zcd -target-feature -experimental-zcf -target-feature -experimental-zvfh -target-feature -experimental-zawrs -target-feature -experimental-ztso -target-feature +relax -target-feature -save-restore -target-abi ilp32f -msmall-data-limit 8 -mllvm -treat-scalable-fixed-error-as-warning -debugger-tuning=gdb -v -ffunction-sections -fdata-sections -fcoverage-compilation-dir=/home/eecs/nicolas.a.castaneda/vortex2/tests/opencl/vecadd -resource-dir /scratch/nicolas.a.castaneda/build/llvm-vortex/lib/clang/16 -O3 -fdebug-compilation-dir=/home/eecs/nicolas.a.castaneda/vortex2/tests/opencl/vecadd -ferror-limit 19 -fno-signed-char -fgnuc-version=4.2.1 -vectorize-loops -vectorize-slp -target-feature +vortex -faddrsig -o /home/eecs/nicolas.a.castaneda/.cache/pocl/kcache/tempfile_bNkEx5.so.o -x ir /home/eecs/nicolas.a.castaneda/.cache/pocl/kcache/LC/GBGPBFMNDJDMBBBLBDOEKIFEMMAACFDCFMIKM/vecadd/0-0-0/parallel.bc
+clang -cc1 version 16.0.6 based upon LLVM 16.0.6 default target riscv32-unknown-elf
+warning: overriding the module target triple with riscv32-unknown-unknown-elf [-Woverride-module]
+*** DivergenceTracker::initialize(): _pocl_kernel_vecadd
+*** divergent function argument: 
+*** divergent function argument: 
+*** divergent function argument: 
+*** divergent function argument: 
+*** divergent function argument: 
+*** divergent function argument: 
+*** divergent function argument: 
+*** divergent data dependency:
+  store i32 %add.i, ptr %2, align 4, !tbaa !34
+*** divergent data dependency:
+  %9 = load i32, ptr %1, align 4, !tbaa !34
+*** divergent data dependency:
+  %add.i = add nsw i32 %9, %8
+*** divergent data dependency:
+  %8 = load i32, ptr %0, align 4, !tbaa !34
+
+After divergence analysis on _pocl_kernel_vecadd:
+DIVERGENT: ptr %0
+DIVERGENT: ptr %1
+DIVERGENT: ptr %2
+DIVERGENT: ptr %3
+DIVERGENT: i32 %4
+DIVERGENT: i32 %5
+DIVERGENT: i32 %6
+
+           :
+DIVERGENT:       %8 = load i32, ptr %0, align 4, !tbaa !34
+DIVERGENT:       %9 = load i32, ptr %1, align 4, !tbaa !34
+DIVERGENT:       %add.i = add nsw i32 %9, %8
+DIVERGENT:       store i32 %add.i, ptr %2, align 4, !tbaa !34
+                 ret void
+
+*** Vortex Divergent Branch Handling Pass0 ***
+*** before Pass0 changes!
+; Function Attrs: alwaysinline mustprogress nofree norecurse nosync nounwind willreturn memory(argmem: readwrite)
+define void @_pocl_kernel_vecadd(ptr nocapture noundef readonly align 4 %0, ptr nocapture noundef readonly align 4 %1, ptr nocapture noundef writeonly align 4 %2, ptr nocapture readnone %3, i32 %4, i32 %5, i32 %6) local_unnamed_addr #0 !kernel_arg_addr_space !28 !kernel_arg_access_qual !29 !kernel_arg_type !30 !kernel_arg_base_type !30 !kernel_arg_type_qual !31 !kernel_arg_name !32 !pocl_generated !33 {
+  %8 = load i32, ptr %0, align 4, !tbaa !34
+  %9 = load i32, ptr %1, align 4, !tbaa !34
+  %add.i = add nsw i32 %9, %8
+  store i32 %add.i, ptr %2, align 4, !tbaa !34
+  ret void
+}
+
+*** DivergenceTracker::initialize(): _pocl_kernel_vecadd
+*** divergent function argument: 
+*** divergent function argument: 
+*** divergent function argument: 
+*** divergent function argument: 
+*** divergent function argument: 
+*** divergent function argument: 
+*** divergent function argument: 
+*** divergent data dependency:
+  store i32 %add.i, ptr %2, align 4, !tbaa !34
+*** divergent data dependency:
+  %9 = load i32, ptr %1, align 4, !tbaa !34
+*** divergent data dependency:
+  %add.i = add nsw i32 %9, %8
+*** divergent data dependency:
+  %8 = load i32, ptr %0, align 4, !tbaa !34
+
+After divergence analysis on _pocl_kernel_vecadd:
+DIVERGENT: ptr %0
+DIVERGENT: ptr %1
+DIVERGENT: ptr %2
+DIVERGENT: ptr %3
+DIVERGENT: i32 %4
+DIVERGENT: i32 %5
+DIVERGENT: i32 %6
+
+           :
+DIVERGENT:       %8 = load i32, ptr %0, align 4, !tbaa !34
+DIVERGENT:       %9 = load i32, ptr %1, align 4, !tbaa !34
+DIVERGENT:       %add.i = add nsw i32 %9, %8
+DIVERGENT:       store i32 %add.i, ptr %2, align 4, !tbaa !34
+                 ret void
+
+*** DivergenceTracker::initialize(): _pocl_kernel_vecadd
+*** divergent function argument: 
+*** divergent function argument: 
+*** divergent function argument: 
+*** divergent function argument: 
+*** divergent function argument: 
+*** divergent function argument: 
+*** divergent function argument: 
+*** divergent data dependency:
+  store i32 %add.i, ptr %2, align 4, !tbaa !34
+*** divergent data dependency:
+  %9 = load i32, ptr %1, align 4, !tbaa !34
+*** divergent data dependency:
+  %add.i = add nsw i32 %9, %8
+*** divergent data dependency:
+  %8 = load i32, ptr %0, align 4, !tbaa !34
+
+After divergence analysis on _pocl_kernel_vecadd:
+DIVERGENT: ptr %0
+DIVERGENT: ptr %1
+DIVERGENT: ptr %2
+DIVERGENT: ptr %3
+DIVERGENT: i32 %4
+DIVERGENT: i32 %5
+DIVERGENT: i32 %6
+
+           :
+DIVERGENT:       %8 = load i32, ptr %0, align 4, !tbaa !34
+DIVERGENT:       %9 = load i32, ptr %1, align 4, !tbaa !34
+DIVERGENT:       %add.i = add nsw i32 %9, %8
+DIVERGENT:       store i32 %add.i, ptr %2, align 4, !tbaa !34
+                 ret void
+
+*** DivergenceTracker::initialize(): _pocl_kernel_vecadd
+*** divergent function argument: 
+*** divergent function argument: 
+*** divergent function argument: 
+*** divergent function argument: 
+*** divergent function argument: 
+*** divergent function argument: 
+*** divergent function argument: 
+*** divergent data dependency:
+  store i32 %add.i, ptr %2, align 4, !tbaa !34
+*** divergent data dependency:
+  %9 = load i32, ptr %1, align 4, !tbaa !34
+*** divergent data dependency:
+  %add.i = add nsw i32 %9, %8
+*** divergent data dependency:
+  %8 = load i32, ptr %0, align 4, !tbaa !34
+
+After divergence analysis on _pocl_kernel_vecadd:
+DIVERGENT: ptr %0
+DIVERGENT: ptr %1
+DIVERGENT: ptr %2
+DIVERGENT: ptr %3
+DIVERGENT: i32 %4
+DIVERGENT: i32 %5
+DIVERGENT: i32 %6
+
+           :
+DIVERGENT:       %8 = load i32, ptr %0, align 4, !tbaa !34
+DIVERGENT:       %9 = load i32, ptr %1, align 4, !tbaa !34
+DIVERGENT:       %add.i = add nsw i32 %9, %8
+DIVERGENT:       store i32 %add.i, ptr %2, align 4, !tbaa !34
+                 ret void
+
+*** Vortex Divergent Branch Handling ***
+*** Region info:
+[0] %7 => <Function Return>
+
+*** DivergenceTracker::initialize(): _pocl_kernel_vecadd_workgroup
+*** divergent function argument: 
+*** divergent function argument: 
+*** divergent function argument: 
+*** divergent function argument: 
+*** divergent function argument: 
+*** divergent data dependency:
+  %11 = getelementptr ptr, ptr %0, i32 2
+*** divergent data dependency:
+  %8 = getelementptr ptr, ptr %0, i32 1
+*** divergent data dependency:
+  %6 = load ptr, ptr %0, align 4
+*** divergent data dependency:
+  %7 = load ptr, ptr %6, align 4
+*** divergent data dependency:
+  %14 = load i32, ptr %7, align 4, !tbaa !28
+*** divergent data dependency:
+  %add.i.i = add nsw i32 %15, %14
+*** divergent data dependency:
+  store i32 %add.i.i, ptr %13, align 4, !tbaa !28
+*** divergent data dependency:
+  %9 = load ptr, ptr %8, align 4
+*** divergent data dependency:
+  %10 = load ptr, ptr %9, align 4
+*** divergent data dependency:
+  %15 = load i32, ptr %10, align 4, !tbaa !28
+*** divergent data dependency:
+  %12 = load ptr, ptr %11, align 4
+*** divergent data dependency:
+  %13 = load ptr, ptr %12, align 4
+
+After divergence analysis on _pocl_kernel_vecadd_workgroup:
+DIVERGENT: ptr %0
+DIVERGENT: ptr %1
+DIVERGENT: i32 %2
+DIVERGENT: i32 %3
+DIVERGENT: i32 %4
+
+           :
+DIVERGENT:       %6 = load ptr, ptr %0, align 4
+DIVERGENT:       %7 = load ptr, ptr %6, align 4
+DIVERGENT:       %8 = getelementptr ptr, ptr %0, i32 1
+DIVERGENT:       %9 = load ptr, ptr %8, align 4
+DIVERGENT:       %10 = load ptr, ptr %9, align 4
+DIVERGENT:       %11 = getelementptr ptr, ptr %0, i32 2
+DIVERGENT:       %12 = load ptr, ptr %11, align 4
+DIVERGENT:       %13 = load ptr, ptr %12, align 4
+DIVERGENT:       %14 = load i32, ptr %7, align 4, !tbaa !28
+DIVERGENT:       %15 = load i32, ptr %10, align 4, !tbaa !28
+DIVERGENT:       %add.i.i = add nsw i32 %15, %14
+DIVERGENT:       store i32 %add.i.i, ptr %13, align 4, !tbaa !28
+                 ret void
+
+*** Vortex Divergent Branch Handling Pass0 ***
+*** before Pass0 changes!
+; Function Attrs: mustprogress nofree norecurse nosync nounwind willreturn memory(readwrite, inaccessiblemem: none)
+define void @_pocl_kernel_vecadd_workgroup(ptr nocapture readonly %0, ptr nocapture readnone %1, i32 %2, i32 %3, i32 %4) local_unnamed_addr #1 {
+  %6 = load ptr, ptr %0, align 4
+  %7 = load ptr, ptr %6, align 4
+  %8 = getelementptr ptr, ptr %0, i32 1
+  %9 = load ptr, ptr %8, align 4
+  %10 = load ptr, ptr %9, align 4
+  %11 = getelementptr ptr, ptr %0, i32 2
+  %12 = load ptr, ptr %11, align 4
+  %13 = load ptr, ptr %12, align 4
+  %14 = load i32, ptr %7, align 4, !tbaa !34
+  %15 = load i32, ptr %10, align 4, !tbaa !34
+  %add.i.i = add nsw i32 %15, %14
+  store i32 %add.i.i, ptr %13, align 4, !tbaa !34
+  ret void
+}
+
+*** DivergenceTracker::initialize(): _pocl_kernel_vecadd_workgroup
+*** divergent function argument: 
+*** divergent function argument: 
+*** divergent function argument: 
+*** divergent function argument: 
+*** divergent function argument: 
+*** divergent data dependency:
+  %11 = getelementptr ptr, ptr %0, i32 2
+*** divergent data dependency:
+  %8 = getelementptr ptr, ptr %0, i32 1
+*** divergent data dependency:
+  %6 = load ptr, ptr %0, align 4
+*** divergent data dependency:
+  %7 = load ptr, ptr %6, align 4
+*** divergent data dependency:
+  %14 = load i32, ptr %7, align 4, !tbaa !28
+*** divergent data dependency:
+  %add.i.i = add nsw i32 %15, %14
+*** divergent data dependency:
+  store i32 %add.i.i, ptr %13, align 4, !tbaa !28
+*** divergent data dependency:
+  %9 = load ptr, ptr %8, align 4
+*** divergent data dependency:
+  %10 = load ptr, ptr %9, align 4
+*** divergent data dependency:
+  %15 = load i32, ptr %10, align 4, !tbaa !28
+*** divergent data dependency:
+  %12 = load ptr, ptr %11, align 4
+*** divergent data dependency:
+  %13 = load ptr, ptr %12, align 4
+
+After divergence analysis on _pocl_kernel_vecadd_workgroup:
+DIVERGENT: ptr %0
+DIVERGENT: ptr %1
+DIVERGENT: i32 %2
+DIVERGENT: i32 %3
+DIVERGENT: i32 %4
+
+           :
+DIVERGENT:       %6 = load ptr, ptr %0, align 4
+DIVERGENT:       %7 = load ptr, ptr %6, align 4
+DIVERGENT:       %8 = getelementptr ptr, ptr %0, i32 1
+DIVERGENT:       %9 = load ptr, ptr %8, align 4
+DIVERGENT:       %10 = load ptr, ptr %9, align 4
+DIVERGENT:       %11 = getelementptr ptr, ptr %0, i32 2
+DIVERGENT:       %12 = load ptr, ptr %11, align 4
+DIVERGENT:       %13 = load ptr, ptr %12, align 4
+DIVERGENT:       %14 = load i32, ptr %7, align 4, !tbaa !28
+DIVERGENT:       %15 = load i32, ptr %10, align 4, !tbaa !28
+DIVERGENT:       %add.i.i = add nsw i32 %15, %14
+DIVERGENT:       store i32 %add.i.i, ptr %13, align 4, !tbaa !28
+                 ret void
+
+*** DivergenceTracker::initialize(): _pocl_kernel_vecadd_workgroup
+*** divergent function argument: 
+*** divergent function argument: 
+*** divergent function argument: 
+*** divergent function argument: 
+*** divergent function argument: 
+*** divergent data dependency:
+  %11 = getelementptr ptr, ptr %0, i32 2
+*** divergent data dependency:
+  %8 = getelementptr ptr, ptr %0, i32 1
+*** divergent data dependency:
+  %6 = load ptr, ptr %0, align 4
+*** divergent data dependency:
+  %7 = load ptr, ptr %6, align 4
+*** divergent data dependency:
+  %14 = load i32, ptr %7, align 4, !tbaa !28
+*** divergent data dependency:
+  %add.i.i = add nsw i32 %15, %14
+*** divergent data dependency:
+  store i32 %add.i.i, ptr %13, align 4, !tbaa !28
+*** divergent data dependency:
+  %9 = load ptr, ptr %8, align 4
+*** divergent data dependency:
+  %10 = load ptr, ptr %9, align 4
+*** divergent data dependency:
+  %15 = load i32, ptr %10, align 4, !tbaa !28
+*** divergent data dependency:
+  %12 = load ptr, ptr %11, align 4
+*** divergent data dependency:
+  %13 = load ptr, ptr %12, align 4
+
+After divergence analysis on _pocl_kernel_vecadd_workgroup:
+DIVERGENT: ptr %0
+DIVERGENT: ptr %1
+DIVERGENT: i32 %2
+DIVERGENT: i32 %3
+DIVERGENT: i32 %4
+
+           :
+DIVERGENT:       %6 = load ptr, ptr %0, align 4
+DIVERGENT:       %7 = load ptr, ptr %6, align 4
+DIVERGENT:       %8 = getelementptr ptr, ptr %0, i32 1
+DIVERGENT:       %9 = load ptr, ptr %8, align 4
+DIVERGENT:       %10 = load ptr, ptr %9, align 4
+DIVERGENT:       %11 = getelementptr ptr, ptr %0, i32 2
+DIVERGENT:       %12 = load ptr, ptr %11, align 4
+DIVERGENT:       %13 = load ptr, ptr %12, align 4
+DIVERGENT:       %14 = load i32, ptr %7, align 4, !tbaa !28
+DIVERGENT:       %15 = load i32, ptr %10, align 4, !tbaa !28
+DIVERGENT:       %add.i.i = add nsw i32 %15, %14
+DIVERGENT:       store i32 %add.i.i, ptr %13, align 4, !tbaa !28
+                 ret void
+
+*** DivergenceTracker::initialize(): _pocl_kernel_vecadd_workgroup
+*** divergent function argument: 
+*** divergent function argument: 
+*** divergent function argument: 
+*** divergent function argument: 
+*** divergent function argument: 
+*** divergent data dependency:
+  %11 = getelementptr ptr, ptr %0, i32 2
+*** divergent data dependency:
+  %8 = getelementptr ptr, ptr %0, i32 1
+*** divergent data dependency:
+  %6 = load ptr, ptr %0, align 4
+*** divergent data dependency:
+  %7 = load ptr, ptr %6, align 4
+*** divergent data dependency:
+  %14 = load i32, ptr %7, align 4, !tbaa !28
+*** divergent data dependency:
+  %add.i.i = add nsw i32 %15, %14
+*** divergent data dependency:
+  store i32 %add.i.i, ptr %13, align 4, !tbaa !28
+*** divergent data dependency:
+  %9 = load ptr, ptr %8, align 4
+*** divergent data dependency:
+  %10 = load ptr, ptr %9, align 4
+*** divergent data dependency:
+  %15 = load i32, ptr %10, align 4, !tbaa !28
+*** divergent data dependency:
+  %12 = load ptr, ptr %11, align 4
+*** divergent data dependency:
+  %13 = load ptr, ptr %12, align 4
+
+After divergence analysis on _pocl_kernel_vecadd_workgroup:
+DIVERGENT: ptr %0
+DIVERGENT: ptr %1
+DIVERGENT: i32 %2
+DIVERGENT: i32 %3
+DIVERGENT: i32 %4
+
+           :
+DIVERGENT:       %6 = load ptr, ptr %0, align 4
+DIVERGENT:       %7 = load ptr, ptr %6, align 4
+DIVERGENT:       %8 = getelementptr ptr, ptr %0, i32 1
+DIVERGENT:       %9 = load ptr, ptr %8, align 4
+DIVERGENT:       %10 = load ptr, ptr %9, align 4
+DIVERGENT:       %11 = getelementptr ptr, ptr %0, i32 2
+DIVERGENT:       %12 = load ptr, ptr %11, align 4
+DIVERGENT:       %13 = load ptr, ptr %12, align 4
+DIVERGENT:       %14 = load i32, ptr %7, align 4, !tbaa !28
+DIVERGENT:       %15 = load i32, ptr %10, align 4, !tbaa !28
+DIVERGENT:       %add.i.i = add nsw i32 %15, %14
+DIVERGENT:       store i32 %add.i.i, ptr %13, align 4, !tbaa !28
+                 ret void
+
+*** Vortex Divergent Branch Handling ***
+*** Region info:
+[0] %5 => <Function Return>
+
+VORTEX Intrinsic Func pass 
+1 warning generated.
+[2024-04-22 22:34:45.017598297] POCL: in fn int pocl_llvm_build_vortex_program(cl_kernel, unsigned int, cl_device_id, const char*, const char*, char*) at line 181:
+  *** INFO ***  |      LLVM |  running "/scratch/nicolas.a.castaneda/build/llvm-vortex/bin/clang -march=rv32imaf -mabi=ilp32f -v -O3 --sysroot=/home/eecs/nicolas.a.castaneda/vortex-toolchain-prebuilt/riscv-gnu-toolchain/riscv32-unknown-elf --gcc-toolchain=/home/eecs/nicolas.a.castaneda/vortex-toolchain-prebuilt/riscv-gnu-toolchain -Xclang -target-feature -Xclang +vortex -fno-rtti -fno-exceptions -nostartfiles -fdata-sections -ffunction-sections -I/home/eecs/nicolas.a.castaneda/vortex2/kernel/include -DNDEBUG -DLLVM_VOTEX -I/scratch/nicolas.a.castaneda/build/pocl2/compiler/share/pocl/include /tmp/pocl_vortex_kernel_eMKlA9.c /home/eecs/nicolas.a.castaneda/.cache/pocl/kcache/tempfile_bNkEx5.so.o -Wl,-Bstatic,--gc-sections,-T/home/eecs/nicolas.a.castaneda/vortex2/kernel/linker/vx_link32.ld,--defsym=STARTUP_ADDR=0x80000000 /home/eecs/nicolas.a.castaneda/vortex2/kernel/libvortexrt.a -lm -o vecadd.bin_gsOto8.elf"
+clang version 16.0.6 (https://github.com/vortexgpgpu/llvm 58811bfa61a503fd4a5f0dc7b57802fae51c3f5d)
+Target: riscv32-unknown-unknown-elf
+Thread model: posix
+InstalledDir: /scratch/nicolas.a.castaneda/build/llvm-vortex/bin
+Found candidate GCC installation: /home/eecs/nicolas.a.castaneda/vortex-toolchain-prebuilt/riscv-gnu-toolchain/lib/gcc/riscv32-unknown-elf/12.2.0
+Selected GCC installation: /home/eecs/nicolas.a.castaneda/vortex-toolchain-prebuilt/riscv-gnu-toolchain/lib/gcc/riscv32-unknown-elf/12.2.0
+ "/scratch/nicolas.a.castaneda/build/llvm-vortex/bin/clang-16" -cc1 -triple riscv32-unknown-unknown-elf -emit-obj -disable-free -clear-ast-before-backend -main-file-name pocl_vortex_kernel_eMKlA9.c -mrelocation-model static -mframe-pointer=none -fmath-errno -ffp-contract=on -fno-rounding-math -mconstructor-aliases -nostdsysteminc -target-cpu generic-rv32 -target-feature +m -target-feature +a -target-feature +f -target-feature -e -target-feature -d -target-feature -c -target-feature -h -target-feature -zihintpause -target-feature -zfhmin -target-feature -zfh -target-feature -zfinx -target-feature -zdinx -target-feature -zhinxmin -target-feature -zhinx -target-feature -zba -target-feature -zbb -target-feature -zbc -target-feature -zbs -target-feature -zbkb -target-feature -zbkc -target-feature -zbkx -target-feature -zknd -target-feature -zkne -target-feature -zknh -target-feature -zksed -target-feature -zksh -target-feature -zkr -target-feature -zkn -target-feature -zks -target-feature -zkt -target-feature -zk -target-feature -zmmul -target-feature -v -target-feature -zvl32b -target-feature -zvl64b -target-feature -zvl128b -target-feature -zvl256b -target-feature -zvl512b -target-feature -zvl1024b -target-feature -zvl2048b -target-feature -zvl4096b -target-feature -zvl8192b -target-feature -zvl16384b -target-feature -zvl32768b -target-feature -zvl65536b -target-feature -zve32x -target-feature -zve32f -target-feature -zve64x -target-feature -zve64f -target-feature -zve64d -target-feature -zicbom -target-feature -zicboz -target-feature -zicbop -target-feature -svnapot -target-feature -svpbmt -target-feature -svinval -target-feature -xventanacondops -target-feature -xtheadvdot -target-feature -experimental-zihintntl -target-feature -experimental-zca -target-feature -experimental-zcd -target-feature -experimental-zcf -target-feature -experimental-zvfh -target-feature -experimental-zawrs -target-feature -experimental-ztso -target-feature +relax -target-feature -save-restore -target-abi ilp32f -msmall-data-limit 8 -mllvm -treat-scalable-fixed-error-as-warning -debugger-tuning=gdb -v -ffunction-sections -fdata-sections -fcoverage-compilation-dir=/home/eecs/nicolas.a.castaneda/vortex2/tests/opencl/vecadd -resource-dir /scratch/nicolas.a.castaneda/build/llvm-vortex/lib/clang/16 -I /home/eecs/nicolas.a.castaneda/vortex2/kernel/include -D NDEBUG -D LLVM_VOTEX -I /scratch/nicolas.a.castaneda/build/pocl2/compiler/share/pocl/include -isysroot /home/eecs/nicolas.a.castaneda/vortex-toolchain-prebuilt/riscv-gnu-toolchain/riscv32-unknown-elf -internal-isystem /scratch/nicolas.a.castaneda/build/llvm-vortex/lib/clang/16/include -internal-isystem /home/eecs/nicolas.a.castaneda/vortex-toolchain-prebuilt/riscv-gnu-toolchain/riscv32-unknown-elf/include -O3 -fdebug-compilation-dir=/home/eecs/nicolas.a.castaneda/vortex2/tests/opencl/vecadd -ferror-limit 19 -fno-signed-char -fgnuc-version=4.2.1 -vectorize-loops -vectorize-slp -target-feature +vortex -faddrsig -o /tmp/pocl_vortex_kernel_eMKlA9-d98e70.o -x c /tmp/pocl_vortex_kernel_eMKlA9.c
+clang -cc1 version 16.0.6 based upon LLVM 16.0.6 default target riscv32-unknown-elf
+ignoring duplicate directory "/scratch/nicolas.a.castaneda/build/llvm-vortex/lib/clang/16/include"
+#include "..." search starts here:
+#include <...> search starts here:
+ /home/eecs/nicolas.a.castaneda/vortex2/kernel/include
+ /scratch/nicolas.a.castaneda/build/pocl2/compiler/share/pocl/include
+ /scratch/nicolas.a.castaneda/build/llvm-vortex/lib/clang/16/include
+ /home/eecs/nicolas.a.castaneda/vortex-toolchain-prebuilt/riscv-gnu-toolchain/riscv32-unknown-elf/include
+End of search list.
+/tmp/pocl_vortex_kernel_eMKlA9.c:6:19: warning: passing 'const context_t *' to parameter of type 'context_t *' discards qualifiers [-Wincompatible-pointer-types-discards-qualifiers]
+  vx_spawn_kernel(ctx, (void*)_pocl_kernel_vecadd_workgroup, args);
+                  ^~~
+/home/eecs/nicolas.a.castaneda/vortex2/kernel/include/vx_spawn.h:48:34: note: passing argument to parameter 'ctx' here
+void vx_spawn_kernel(context_t * ctx, vx_spawn_kernel_cb callback, void * arg);
+                                 ^
+*** DivergenceTracker::initialize(): main
+*** divergent return variable: 
+
+After divergence analysis on main:
+
+           entry:
+DIVERGENT:       tail call void @vx_spawn_kernel(ptr noundef nonnull inttoptr (i32 2147418112 to ptr), ptr noundef nonnull @_pocl_kernel_vecadd_workgroup, ptr noundef nonnull inttoptr (i32 2147418164 to ptr)) #2
+                 ret i32 0
+
+*** Vortex Divergent Branch Handling Pass0 ***
+*** before Pass0 changes!
+; Function Attrs: nounwind
+define dso_local i32 @main() local_unnamed_addr #0 {
+entry:
+  tail call void @vx_spawn_kernel(ptr noundef nonnull inttoptr (i32 2147418112 to ptr), ptr noundef nonnull @_pocl_kernel_vecadd_workgroup, ptr noundef nonnull inttoptr (i32 2147418164 to ptr)) #2
+  ret i32 0
+}
+
+*** DivergenceTracker::initialize(): main
+*** divergent return variable: 
+
+After divergence analysis on main:
+
+           entry:
+DIVERGENT:       tail call void @vx_spawn_kernel(ptr noundef nonnull inttoptr (i32 2147418112 to ptr), ptr noundef nonnull @_pocl_kernel_vecadd_workgroup, ptr noundef nonnull inttoptr (i32 2147418164 to ptr)) #2
+                 ret i32 0
+
+*** DivergenceTracker::initialize(): main
+*** divergent return variable: 
+
+After divergence analysis on main:
+
+           entry:
+DIVERGENT:       tail call void @vx_spawn_kernel(ptr noundef nonnull inttoptr (i32 2147418112 to ptr), ptr noundef nonnull @_pocl_kernel_vecadd_workgroup, ptr noundef nonnull inttoptr (i32 2147418164 to ptr)) #2
+                 ret i32 0
+
+*** DivergenceTracker::initialize(): main
+*** divergent return variable: 
+
+After divergence analysis on main:
+
+           entry:
+DIVERGENT:       tail call void @vx_spawn_kernel(ptr noundef nonnull inttoptr (i32 2147418112 to ptr), ptr noundef nonnull @_pocl_kernel_vecadd_workgroup, ptr noundef nonnull inttoptr (i32 2147418164 to ptr)) #2
+                 ret i32 0
+
+*** Vortex Divergent Branch Handling ***
+*** Region info:
+[0] entry => <Function Return>
+
+VORTEX Intrinsic Func pass 
+1 warning generated.
+ "/home/eecs/nicolas.a.castaneda/vortex-toolchain-prebuilt/riscv-gnu-toolchain/lib/gcc/riscv32-unknown-elf/12.2.0/../../../../bin/riscv32-unknown-elf-ld" --sysroot=/home/eecs/nicolas.a.castaneda/vortex-toolchain-prebuilt/riscv-gnu-toolchain/riscv32-unknown-elf -m elf32lriscv -X /tmp/pocl_vortex_kernel_eMKlA9-d98e70.o /home/eecs/nicolas.a.castaneda/.cache/pocl/kcache/tempfile_bNkEx5.so.o -Bstatic --gc-sections -T/home/eecs/nicolas.a.castaneda/vortex2/kernel/linker/vx_link32.ld --defsym=STARTUP_ADDR=0x80000000 /home/eecs/nicolas.a.castaneda/vortex2/kernel/libvortexrt.a -lm -L/home/eecs/nicolas.a.castaneda/vortex-toolchain-prebuilt/riscv-gnu-toolchain/lib/gcc/riscv32-unknown-elf/12.2.0 -L/home/eecs/nicolas.a.castaneda/vortex-toolchain-prebuilt/riscv-gnu-toolchain/riscv32-unknown-elf/lib --start-group -lc -lgloss --end-group -lgcc -o vecadd.bin_gsOto8.elf
+[2024-04-22 22:34:45.284655225] POCL: in fn int pocl_llvm_build_vortex_program(cl_kernel, unsigned int, cl_device_id, const char*, const char*, char*) at line 197:
+  *** INFO ***  |      LLVM |  running "/scratch/nicolas.a.castaneda/build/llvm-vortex/bin/llvm-objcopy -O binary vecadd.bin_gsOto8.elf /home/eecs/nicolas.a.castaneda/.cache/pocl/kcache/LC/GBGPBFMNDJDMBBBLBDOEKIFEMMAACFDCFMIKM/vecadd/0-0-0/vecadd.bin"
+[2024-04-22 22:34:45.302008444] POCL: in fn int pocl_llvm_build_vortex_program(cl_kernel, unsigned int, cl_device_id, const char*, const char*, char*) at line 213:
+  *** INFO ***  |      LLVM |  running "/scratch/nicolas.a.castaneda/build/llvm-vortex/bin/llvm-objdump -D vecadd.bin_gsOto8.elf > vecadd.dump"
+[2024-04-22 22:34:45.502179311] POCL: in fn llvm_codegen at line 616:
+  *** INFO ***  |    TIMING |       >>>       745.781  ms    API: llvm_codegen
+[2024-04-22 22:34:45.502198232] POCL: in fn pocl_check_kernel_disk_cache at line 1326:
+  *** INFO ***  |   GENERAL |  Built a generic WG function: /home/eecs/nicolas.a.castaneda/.cache/pocl/kcache/LC/GBGPBFMNDJDMBBBLBDOEKIFEMMAACFDCFMIKM/vecadd/0-0-0/vecadd.bin
+[2024-04-22 22:34:45.598616994] POCL: in fn int pocl_llvm_generate_workgroup_function_nowrite(unsigned int, cl_device_id, cl_kernel, _cl_command_node*, void**, int) at line 756:
+  *** INFO ***  |    TIMING |       >>>        94.469  ms    API: llvm_workgroup_ir_func_gen
+[2024-04-22 22:34:45.602273762] POCL: in fn llvm_codegen at line 535:
+  *** INFO ***  |      LLVM |  Writing parallel.bc to /home/eecs/nicolas.a.castaneda/.cache/pocl/kcache/LC/GBGPBFMNDJDMBBBLBDOEKIFEMMAACFDCFMIKM/vecadd/0-0-0-goffs0/parallel.bc.
+[2024-04-22 22:34:45.617280413] POCL: in fn int pocl_llvm_build_vortex_program(cl_kernel, unsigned int, cl_device_id, const char*, const char*, char*) at line 100:
+  *** INFO ***  |   GENERAL |  using $LLVM_PREFIX=/scratch/nicolas.a.castaneda/build/llvm-vortex!
+[2024-04-22 22:34:45.617299377] POCL: in fn int pocl_llvm_build_vortex_program(cl_kernel, unsigned int, cl_device_id, const char*, const char*, char*) at line 111:
+  *** INFO ***  |      LLVM |  running "/scratch/nicolas.a.castaneda/build/llvm-vortex/bin/clang -march=rv32imaf -mabi=ilp32f -v -O3 --sysroot=/home/eecs/nicolas.a.castaneda/vortex-toolchain-prebuilt/riscv-gnu-toolchain/riscv32-unknown-elf --gcc-toolchain=/home/eecs/nicolas.a.castaneda/vortex-toolchain-prebuilt/riscv-gnu-toolchain -Xclang -target-feature -Xclang +vortex -fno-rtti -fno-exceptions -nostartfiles -fdata-sections -ffunction-sections -I/home/eecs/nicolas.a.castaneda/vortex2/kernel/include -DNDEBUG -DLLVM_VOTEX /home/eecs/nicolas.a.castaneda/.cache/pocl/kcache/LC/GBGPBFMNDJDMBBBLBDOEKIFEMMAACFDCFMIKM/vecadd/0-0-0-goffs0/parallel.bc -c -o /home/eecs/nicolas.a.castaneda/.cache/pocl/kcache/tempfile_07WqB9.so.o"
+clang version 16.0.6 (https://github.com/vortexgpgpu/llvm 58811bfa61a503fd4a5f0dc7b57802fae51c3f5d)
+Target: riscv32-unknown-unknown-elf
+Thread model: posix
+InstalledDir: /scratch/nicolas.a.castaneda/build/llvm-vortex/bin
+Found candidate GCC installation: /home/eecs/nicolas.a.castaneda/vortex-toolchain-prebuilt/riscv-gnu-toolchain/lib/gcc/riscv32-unknown-elf/12.2.0
+Selected GCC installation: /home/eecs/nicolas.a.castaneda/vortex-toolchain-prebuilt/riscv-gnu-toolchain/lib/gcc/riscv32-unknown-elf/12.2.0
+clang-16: warning: argument unused during compilation: '-nostartfiles' [-Wunused-command-line-argument]
+clang-16: warning: argument unused during compilation: '-I /home/eecs/nicolas.a.castaneda/vortex2/kernel/include' [-Wunused-command-line-argument]
+ (in-process)
+ "/scratch/nicolas.a.castaneda/build/llvm-vortex/bin/clang-16" -cc1 -triple riscv32-unknown-unknown-elf -emit-obj -disable-free -clear-ast-before-backend -main-file-name parallel.bc -mrelocation-model static -mframe-pointer=none -fmath-errno -ffp-contract=on -fno-rounding-math -mconstructor-aliases -nostdsysteminc -target-cpu generic-rv32 -target-feature +m -target-feature +a -target-feature +f -target-feature -e -target-feature -d -target-feature -c -target-feature -h -target-feature -zihintpause -target-feature -zfhmin -target-feature -zfh -target-feature -zfinx -target-feature -zdinx -target-feature -zhinxmin -target-feature -zhinx -target-feature -zba -target-feature -zbb -target-feature -zbc -target-feature -zbs -target-feature -zbkb -target-feature -zbkc -target-feature -zbkx -target-feature -zknd -target-feature -zkne -target-feature -zknh -target-feature -zksed -target-feature -zksh -target-feature -zkr -target-feature -zkn -target-feature -zks -target-feature -zkt -target-feature -zk -target-feature -zmmul -target-feature -v -target-feature -zvl32b -target-feature -zvl64b -target-feature -zvl128b -target-feature -zvl256b -target-feature -zvl512b -target-feature -zvl1024b -target-feature -zvl2048b -target-feature -zvl4096b -target-feature -zvl8192b -target-feature -zvl16384b -target-feature -zvl32768b -target-feature -zvl65536b -target-feature -zve32x -target-feature -zve32f -target-feature -zve64x -target-feature -zve64f -target-feature -zve64d -target-feature -zicbom -target-feature -zicboz -target-feature -zicbop -target-feature -svnapot -target-feature -svpbmt -target-feature -svinval -target-feature -xventanacondops -target-feature -xtheadvdot -target-feature -experimental-zihintntl -target-feature -experimental-zca -target-feature -experimental-zcd -target-feature -experimental-zcf -target-feature -experimental-zvfh -target-feature -experimental-zawrs -target-feature -experimental-ztso -target-feature +relax -target-feature -save-restore -target-abi ilp32f -msmall-data-limit 8 -mllvm -treat-scalable-fixed-error-as-warning -debugger-tuning=gdb -v -ffunction-sections -fdata-sections -fcoverage-compilation-dir=/home/eecs/nicolas.a.castaneda/vortex2/tests/opencl/vecadd -resource-dir /scratch/nicolas.a.castaneda/build/llvm-vortex/lib/clang/16 -O3 -fdebug-compilation-dir=/home/eecs/nicolas.a.castaneda/vortex2/tests/opencl/vecadd -ferror-limit 19 -fno-signed-char -fgnuc-version=4.2.1 -vectorize-loops -vectorize-slp -target-feature +vortex -faddrsig -o /home/eecs/nicolas.a.castaneda/.cache/pocl/kcache/tempfile_07WqB9.so.o -x ir /home/eecs/nicolas.a.castaneda/.cache/pocl/kcache/LC/GBGPBFMNDJDMBBBLBDOEKIFEMMAACFDCFMIKM/vecadd/0-0-0-goffs0/parallel.bc
+clang -cc1 version 16.0.6 based upon LLVM 16.0.6 default target riscv32-unknown-elf
+warning: overriding the module target triple with riscv32-unknown-unknown-elf [-Woverride-module]
+*** DivergenceTracker::initialize(): _pocl_kernel_vecadd
+*** divergent function argument: 
+*** divergent function argument: 
+*** divergent function argument: 
+*** divergent function argument: 
+*** divergent function argument: 
+*** divergent function argument: 
+*** divergent function argument: 
+*** divergent data dependency:
+  store i32 %add.i, ptr %2, align 4, !tbaa !34
+*** divergent data dependency:
+  %9 = load i32, ptr %1, align 4, !tbaa !34
+*** divergent data dependency:
+  %add.i = add nsw i32 %9, %8
+*** divergent data dependency:
+  %8 = load i32, ptr %0, align 4, !tbaa !34
+
+After divergence analysis on _pocl_kernel_vecadd:
+DIVERGENT: ptr %0
+DIVERGENT: ptr %1
+DIVERGENT: ptr %2
+DIVERGENT: ptr %3
+DIVERGENT: i32 %4
+DIVERGENT: i32 %5
+DIVERGENT: i32 %6
+
+           :
+DIVERGENT:       %8 = load i32, ptr %0, align 4, !tbaa !34
+DIVERGENT:       %9 = load i32, ptr %1, align 4, !tbaa !34
+DIVERGENT:       %add.i = add nsw i32 %9, %8
+DIVERGENT:       store i32 %add.i, ptr %2, align 4, !tbaa !34
+                 ret void
+
+*** Vortex Divergent Branch Handling Pass0 ***
+*** before Pass0 changes!
+; Function Attrs: alwaysinline mustprogress nofree norecurse nosync nounwind willreturn memory(argmem: readwrite)
+define void @_pocl_kernel_vecadd(ptr nocapture noundef readonly align 4 %0, ptr nocapture noundef readonly align 4 %1, ptr nocapture noundef writeonly align 4 %2, ptr nocapture readnone %3, i32 %4, i32 %5, i32 %6) local_unnamed_addr #0 !kernel_arg_addr_space !28 !kernel_arg_access_qual !29 !kernel_arg_type !30 !kernel_arg_base_type !30 !kernel_arg_type_qual !31 !kernel_arg_name !32 !pocl_generated !33 {
+  %8 = load i32, ptr %0, align 4, !tbaa !34
+  %9 = load i32, ptr %1, align 4, !tbaa !34
+  %add.i = add nsw i32 %9, %8
+  store i32 %add.i, ptr %2, align 4, !tbaa !34
+  ret void
+}
+
+*** DivergenceTracker::initialize(): _pocl_kernel_vecadd
+*** divergent function argument: 
+*** divergent function argument: 
+*** divergent function argument: 
+*** divergent function argument: 
+*** divergent function argument: 
+*** divergent function argument: 
+*** divergent function argument: 
+*** divergent data dependency:
+  store i32 %add.i, ptr %2, align 4, !tbaa !34
+*** divergent data dependency:
+  %9 = load i32, ptr %1, align 4, !tbaa !34
+*** divergent data dependency:
+  %add.i = add nsw i32 %9, %8
+*** divergent data dependency:
+  %8 = load i32, ptr %0, align 4, !tbaa !34
+
+After divergence analysis on _pocl_kernel_vecadd:
+DIVERGENT: ptr %0
+DIVERGENT: ptr %1
+DIVERGENT: ptr %2
+DIVERGENT: ptr %3
+DIVERGENT: i32 %4
+DIVERGENT: i32 %5
+DIVERGENT: i32 %6
+
+           :
+DIVERGENT:       %8 = load i32, ptr %0, align 4, !tbaa !34
+DIVERGENT:       %9 = load i32, ptr %1, align 4, !tbaa !34
+DIVERGENT:       %add.i = add nsw i32 %9, %8
+DIVERGENT:       store i32 %add.i, ptr %2, align 4, !tbaa !34
+                 ret void
+
+*** DivergenceTracker::initialize(): _pocl_kernel_vecadd
+*** divergent function argument: 
+*** divergent function argument: 
+*** divergent function argument: 
+*** divergent function argument: 
+*** divergent function argument: 
+*** divergent function argument: 
+*** divergent function argument: 
+*** divergent data dependency:
+  store i32 %add.i, ptr %2, align 4, !tbaa !34
+*** divergent data dependency:
+  %9 = load i32, ptr %1, align 4, !tbaa !34
+*** divergent data dependency:
+  %add.i = add nsw i32 %9, %8
+*** divergent data dependency:
+  %8 = load i32, ptr %0, align 4, !tbaa !34
+
+After divergence analysis on _pocl_kernel_vecadd:
+DIVERGENT: ptr %0
+DIVERGENT: ptr %1
+DIVERGENT: ptr %2
+DIVERGENT: ptr %3
+DIVERGENT: i32 %4
+DIVERGENT: i32 %5
+DIVERGENT: i32 %6
+
+           :
+DIVERGENT:       %8 = load i32, ptr %0, align 4, !tbaa !34
+DIVERGENT:       %9 = load i32, ptr %1, align 4, !tbaa !34
+DIVERGENT:       %add.i = add nsw i32 %9, %8
+DIVERGENT:       store i32 %add.i, ptr %2, align 4, !tbaa !34
+                 ret void
+
+*** DivergenceTracker::initialize(): _pocl_kernel_vecadd
+*** divergent function argument: 
+*** divergent function argument: 
+*** divergent function argument: 
+*** divergent function argument: 
+*** divergent function argument: 
+*** divergent function argument: 
+*** divergent function argument: 
+*** divergent data dependency:
+  store i32 %add.i, ptr %2, align 4, !tbaa !34
+*** divergent data dependency:
+  %9 = load i32, ptr %1, align 4, !tbaa !34
+*** divergent data dependency:
+  %add.i = add nsw i32 %9, %8
+*** divergent data dependency:
+  %8 = load i32, ptr %0, align 4, !tbaa !34
+
+After divergence analysis on _pocl_kernel_vecadd:
+DIVERGENT: ptr %0
+DIVERGENT: ptr %1
+DIVERGENT: ptr %2
+DIVERGENT: ptr %3
+DIVERGENT: i32 %4
+DIVERGENT: i32 %5
+DIVERGENT: i32 %6
+
+           :
+DIVERGENT:       %8 = load i32, ptr %0, align 4, !tbaa !34
+DIVERGENT:       %9 = load i32, ptr %1, align 4, !tbaa !34
+DIVERGENT:       %add.i = add nsw i32 %9, %8
+DIVERGENT:       store i32 %add.i, ptr %2, align 4, !tbaa !34
+                 ret void
+
+*** Vortex Divergent Branch Handling ***
+*** Region info:
+[0] %7 => <Function Return>
+
+*** DivergenceTracker::initialize(): _pocl_kernel_vecadd_workgroup
+*** divergent function argument: 
+*** divergent function argument: 
+*** divergent function argument: 
+*** divergent function argument: 
+*** divergent function argument: 
+*** divergent data dependency:
+  %11 = getelementptr ptr, ptr %0, i32 2
+*** divergent data dependency:
+  %8 = getelementptr ptr, ptr %0, i32 1
+*** divergent data dependency:
+  %6 = load ptr, ptr %0, align 4
+*** divergent data dependency:
+  %7 = load ptr, ptr %6, align 4
+*** divergent data dependency:
+  %14 = load i32, ptr %7, align 4, !tbaa !28
+*** divergent data dependency:
+  %add.i.i = add nsw i32 %15, %14
+*** divergent data dependency:
+  store i32 %add.i.i, ptr %13, align 4, !tbaa !28
+*** divergent data dependency:
+  %9 = load ptr, ptr %8, align 4
+*** divergent data dependency:
+  %10 = load ptr, ptr %9, align 4
+*** divergent data dependency:
+  %15 = load i32, ptr %10, align 4, !tbaa !28
+*** divergent data dependency:
+  %12 = load ptr, ptr %11, align 4
+*** divergent data dependency:
+  %13 = load ptr, ptr %12, align 4
+
+After divergence analysis on _pocl_kernel_vecadd_workgroup:
+DIVERGENT: ptr %0
+DIVERGENT: ptr %1
+DIVERGENT: i32 %2
+DIVERGENT: i32 %3
+DIVERGENT: i32 %4
+
+           :
+DIVERGENT:       %6 = load ptr, ptr %0, align 4
+DIVERGENT:       %7 = load ptr, ptr %6, align 4
+DIVERGENT:       %8 = getelementptr ptr, ptr %0, i32 1
+DIVERGENT:       %9 = load ptr, ptr %8, align 4
+DIVERGENT:       %10 = load ptr, ptr %9, align 4
+DIVERGENT:       %11 = getelementptr ptr, ptr %0, i32 2
+DIVERGENT:       %12 = load ptr, ptr %11, align 4
+DIVERGENT:       %13 = load ptr, ptr %12, align 4
+DIVERGENT:       %14 = load i32, ptr %7, align 4, !tbaa !28
+DIVERGENT:       %15 = load i32, ptr %10, align 4, !tbaa !28
+DIVERGENT:       %add.i.i = add nsw i32 %15, %14
+DIVERGENT:       store i32 %add.i.i, ptr %13, align 4, !tbaa !28
+                 ret void
+
+*** Vortex Divergent Branch Handling Pass0 ***
+*** before Pass0 changes!
+; Function Attrs: mustprogress nofree norecurse nosync nounwind willreturn memory(readwrite, inaccessiblemem: none)
+define void @_pocl_kernel_vecadd_workgroup(ptr nocapture readonly %0, ptr nocapture readnone %1, i32 %2, i32 %3, i32 %4) local_unnamed_addr #1 {
+  %6 = load ptr, ptr %0, align 4
+  %7 = load ptr, ptr %6, align 4
+  %8 = getelementptr ptr, ptr %0, i32 1
+  %9 = load ptr, ptr %8, align 4
+  %10 = load ptr, ptr %9, align 4
+  %11 = getelementptr ptr, ptr %0, i32 2
+  %12 = load ptr, ptr %11, align 4
+  %13 = load ptr, ptr %12, align 4
+  %14 = load i32, ptr %7, align 4, !tbaa !34
+  %15 = load i32, ptr %10, align 4, !tbaa !34
+  %add.i.i = add nsw i32 %15, %14
+  store i32 %add.i.i, ptr %13, align 4, !tbaa !34
+  ret void
+}
+
+*** DivergenceTracker::initialize(): _pocl_kernel_vecadd_workgroup
+*** divergent function argument: 
+*** divergent function argument: 
+*** divergent function argument: 
+*** divergent function argument: 
+*** divergent function argument: 
+*** divergent data dependency:
+  %11 = getelementptr ptr, ptr %0, i32 2
+*** divergent data dependency:
+  %8 = getelementptr ptr, ptr %0, i32 1
+*** divergent data dependency:
+  %6 = load ptr, ptr %0, align 4
+*** divergent data dependency:
+  %7 = load ptr, ptr %6, align 4
+*** divergent data dependency:
+  %14 = load i32, ptr %7, align 4, !tbaa !28
+*** divergent data dependency:
+  %add.i.i = add nsw i32 %15, %14
+*** divergent data dependency:
+  store i32 %add.i.i, ptr %13, align 4, !tbaa !28
+*** divergent data dependency:
+  %9 = load ptr, ptr %8, align 4
+*** divergent data dependency:
+  %10 = load ptr, ptr %9, align 4
+*** divergent data dependency:
+  %15 = load i32, ptr %10, align 4, !tbaa !28
+*** divergent data dependency:
+  %12 = load ptr, ptr %11, align 4
+*** divergent data dependency:
+  %13 = load ptr, ptr %12, align 4
+
+After divergence analysis on _pocl_kernel_vecadd_workgroup:
+DIVERGENT: ptr %0
+DIVERGENT: ptr %1
+DIVERGENT: i32 %2
+DIVERGENT: i32 %3
+DIVERGENT: i32 %4
+
+           :
+DIVERGENT:       %6 = load ptr, ptr %0, align 4
+DIVERGENT:       %7 = load ptr, ptr %6, align 4
+DIVERGENT:       %8 = getelementptr ptr, ptr %0, i32 1
+DIVERGENT:       %9 = load ptr, ptr %8, align 4
+DIVERGENT:       %10 = load ptr, ptr %9, align 4
+DIVERGENT:       %11 = getelementptr ptr, ptr %0, i32 2
+DIVERGENT:       %12 = load ptr, ptr %11, align 4
+DIVERGENT:       %13 = load ptr, ptr %12, align 4
+DIVERGENT:       %14 = load i32, ptr %7, align 4, !tbaa !28
+DIVERGENT:       %15 = load i32, ptr %10, align 4, !tbaa !28
+DIVERGENT:       %add.i.i = add nsw i32 %15, %14
+DIVERGENT:       store i32 %add.i.i, ptr %13, align 4, !tbaa !28
+                 ret void
+
+*** DivergenceTracker::initialize(): _pocl_kernel_vecadd_workgroup
+*** divergent function argument: 
+*** divergent function argument: 
+*** divergent function argument: 
+*** divergent function argument: 
+*** divergent function argument: 
+*** divergent data dependency:
+  %11 = getelementptr ptr, ptr %0, i32 2
+*** divergent data dependency:
+  %8 = getelementptr ptr, ptr %0, i32 1
+*** divergent data dependency:
+  %6 = load ptr, ptr %0, align 4
+*** divergent data dependency:
+  %7 = load ptr, ptr %6, align 4
+*** divergent data dependency:
+  %14 = load i32, ptr %7, align 4, !tbaa !28
+*** divergent data dependency:
+  %add.i.i = add nsw i32 %15, %14
+*** divergent data dependency:
+  store i32 %add.i.i, ptr %13, align 4, !tbaa !28
+*** divergent data dependency:
+  %9 = load ptr, ptr %8, align 4
+*** divergent data dependency:
+  %10 = load ptr, ptr %9, align 4
+*** divergent data dependency:
+  %15 = load i32, ptr %10, align 4, !tbaa !28
+*** divergent data dependency:
+  %12 = load ptr, ptr %11, align 4
+*** divergent data dependency:
+  %13 = load ptr, ptr %12, align 4
+
+After divergence analysis on _pocl_kernel_vecadd_workgroup:
+DIVERGENT: ptr %0
+DIVERGENT: ptr %1
+DIVERGENT: i32 %2
+DIVERGENT: i32 %3
+DIVERGENT: i32 %4
+
+           :
+DIVERGENT:       %6 = load ptr, ptr %0, align 4
+DIVERGENT:       %7 = load ptr, ptr %6, align 4
+DIVERGENT:       %8 = getelementptr ptr, ptr %0, i32 1
+DIVERGENT:       %9 = load ptr, ptr %8, align 4
+DIVERGENT:       %10 = load ptr, ptr %9, align 4
+DIVERGENT:       %11 = getelementptr ptr, ptr %0, i32 2
+DIVERGENT:       %12 = load ptr, ptr %11, align 4
+DIVERGENT:       %13 = load ptr, ptr %12, align 4
+DIVERGENT:       %14 = load i32, ptr %7, align 4, !tbaa !28
+DIVERGENT:       %15 = load i32, ptr %10, align 4, !tbaa !28
+DIVERGENT:       %add.i.i = add nsw i32 %15, %14
+DIVERGENT:       store i32 %add.i.i, ptr %13, align 4, !tbaa !28
+                 ret void
+
+*** DivergenceTracker::initialize(): _pocl_kernel_vecadd_workgroup
+*** divergent function argument: 
+*** divergent function argument: 
+*** divergent function argument: 
+*** divergent function argument: 
+*** divergent function argument: 
+*** divergent data dependency:
+  %11 = getelementptr ptr, ptr %0, i32 2
+*** divergent data dependency:
+  %8 = getelementptr ptr, ptr %0, i32 1
+*** divergent data dependency:
+  %6 = load ptr, ptr %0, align 4
+*** divergent data dependency:
+  %7 = load ptr, ptr %6, align 4
+*** divergent data dependency:
+  %14 = load i32, ptr %7, align 4, !tbaa !28
+*** divergent data dependency:
+  %add.i.i = add nsw i32 %15, %14
+*** divergent data dependency:
+  store i32 %add.i.i, ptr %13, align 4, !tbaa !28
+*** divergent data dependency:
+  %9 = load ptr, ptr %8, align 4
+*** divergent data dependency:
+  %10 = load ptr, ptr %9, align 4
+*** divergent data dependency:
+  %15 = load i32, ptr %10, align 4, !tbaa !28
+*** divergent data dependency:
+  %12 = load ptr, ptr %11, align 4
+*** divergent data dependency:
+  %13 = load ptr, ptr %12, align 4
+
+After divergence analysis on _pocl_kernel_vecadd_workgroup:
+DIVERGENT: ptr %0
+DIVERGENT: ptr %1
+DIVERGENT: i32 %2
+DIVERGENT: i32 %3
+DIVERGENT: i32 %4
+
+           :
+DIVERGENT:       %6 = load ptr, ptr %0, align 4
+DIVERGENT:       %7 = load ptr, ptr %6, align 4
+DIVERGENT:       %8 = getelementptr ptr, ptr %0, i32 1
+DIVERGENT:       %9 = load ptr, ptr %8, align 4
+DIVERGENT:       %10 = load ptr, ptr %9, align 4
+DIVERGENT:       %11 = getelementptr ptr, ptr %0, i32 2
+DIVERGENT:       %12 = load ptr, ptr %11, align 4
+DIVERGENT:       %13 = load ptr, ptr %12, align 4
+DIVERGENT:       %14 = load i32, ptr %7, align 4, !tbaa !28
+DIVERGENT:       %15 = load i32, ptr %10, align 4, !tbaa !28
+DIVERGENT:       %add.i.i = add nsw i32 %15, %14
+DIVERGENT:       store i32 %add.i.i, ptr %13, align 4, !tbaa !28
+                 ret void
+
+*** Vortex Divergent Branch Handling ***
+*** Region info:
+[0] %5 => <Function Return>
+
+VORTEX Intrinsic Func pass 
+1 warning generated.
+[2024-04-22 22:34:45.726557943] POCL: in fn int pocl_llvm_build_vortex_program(cl_kernel, unsigned int, cl_device_id, const char*, const char*, char*) at line 181:
+  *** INFO ***  |      LLVM |  running "/scratch/nicolas.a.castaneda/build/llvm-vortex/bin/clang -march=rv32imaf -mabi=ilp32f -v -O3 --sysroot=/home/eecs/nicolas.a.castaneda/vortex-toolchain-prebuilt/riscv-gnu-toolchain/riscv32-unknown-elf --gcc-toolchain=/home/eecs/nicolas.a.castaneda/vortex-toolchain-prebuilt/riscv-gnu-toolchain -Xclang -target-feature -Xclang +vortex -fno-rtti -fno-exceptions -nostartfiles -fdata-sections -ffunction-sections -I/home/eecs/nicolas.a.castaneda/vortex2/kernel/include -DNDEBUG -DLLVM_VOTEX -I/scratch/nicolas.a.castaneda/build/pocl2/compiler/share/pocl/include /tmp/pocl_vortex_kernel_9J7cT7.c /home/eecs/nicolas.a.castaneda/.cache/pocl/kcache/tempfile_07WqB9.so.o -Wl,-Bstatic,--gc-sections,-T/home/eecs/nicolas.a.castaneda/vortex2/kernel/linker/vx_link32.ld,--defsym=STARTUP_ADDR=0x80000000 /home/eecs/nicolas.a.castaneda/vortex2/kernel/libvortexrt.a -lm -o vecadd.bin_YiZGw5.elf"
+clang version 16.0.6 (https://github.com/vortexgpgpu/llvm 58811bfa61a503fd4a5f0dc7b57802fae51c3f5d)
+Target: riscv32-unknown-unknown-elf
+Thread model: posix
+InstalledDir: /scratch/nicolas.a.castaneda/build/llvm-vortex/bin
+Found candidate GCC installation: /home/eecs/nicolas.a.castaneda/vortex-toolchain-prebuilt/riscv-gnu-toolchain/lib/gcc/riscv32-unknown-elf/12.2.0
+Selected GCC installation: /home/eecs/nicolas.a.castaneda/vortex-toolchain-prebuilt/riscv-gnu-toolchain/lib/gcc/riscv32-unknown-elf/12.2.0
+ "/scratch/nicolas.a.castaneda/build/llvm-vortex/bin/clang-16" -cc1 -triple riscv32-unknown-unknown-elf -emit-obj -disable-free -clear-ast-before-backend -main-file-name pocl_vortex_kernel_9J7cT7.c -mrelocation-model static -mframe-pointer=none -fmath-errno -ffp-contract=on -fno-rounding-math -mconstructor-aliases -nostdsysteminc -target-cpu generic-rv32 -target-feature +m -target-feature +a -target-feature +f -target-feature -e -target-feature -d -target-feature -c -target-feature -h -target-feature -zihintpause -target-feature -zfhmin -target-feature -zfh -target-feature -zfinx -target-feature -zdinx -target-feature -zhinxmin -target-feature -zhinx -target-feature -zba -target-feature -zbb -target-feature -zbc -target-feature -zbs -target-feature -zbkb -target-feature -zbkc -target-feature -zbkx -target-feature -zknd -target-feature -zkne -target-feature -zknh -target-feature -zksed -target-feature -zksh -target-feature -zkr -target-feature -zkn -target-feature -zks -target-feature -zkt -target-feature -zk -target-feature -zmmul -target-feature -v -target-feature -zvl32b -target-feature -zvl64b -target-feature -zvl128b -target-feature -zvl256b -target-feature -zvl512b -target-feature -zvl1024b -target-feature -zvl2048b -target-feature -zvl4096b -target-feature -zvl8192b -target-feature -zvl16384b -target-feature -zvl32768b -target-feature -zvl65536b -target-feature -zve32x -target-feature -zve32f -target-feature -zve64x -target-feature -zve64f -target-feature -zve64d -target-feature -zicbom -target-feature -zicboz -target-feature -zicbop -target-feature -svnapot -target-feature -svpbmt -target-feature -svinval -target-feature -xventanacondops -target-feature -xtheadvdot -target-feature -experimental-zihintntl -target-feature -experimental-zca -target-feature -experimental-zcd -target-feature -experimental-zcf -target-feature -experimental-zvfh -target-feature -experimental-zawrs -target-feature -experimental-ztso -target-feature +relax -target-feature -save-restore -target-abi ilp32f -msmall-data-limit 8 -mllvm -treat-scalable-fixed-error-as-warning -debugger-tuning=gdb -v -ffunction-sections -fdata-sections -fcoverage-compilation-dir=/home/eecs/nicolas.a.castaneda/vortex2/tests/opencl/vecadd -resource-dir /scratch/nicolas.a.castaneda/build/llvm-vortex/lib/clang/16 -I /home/eecs/nicolas.a.castaneda/vortex2/kernel/include -D NDEBUG -D LLVM_VOTEX -I /scratch/nicolas.a.castaneda/build/pocl2/compiler/share/pocl/include -isysroot /home/eecs/nicolas.a.castaneda/vortex-toolchain-prebuilt/riscv-gnu-toolchain/riscv32-unknown-elf -internal-isystem /scratch/nicolas.a.castaneda/build/llvm-vortex/lib/clang/16/include -internal-isystem /home/eecs/nicolas.a.castaneda/vortex-toolchain-prebuilt/riscv-gnu-toolchain/riscv32-unknown-elf/include -O3 -fdebug-compilation-dir=/home/eecs/nicolas.a.castaneda/vortex2/tests/opencl/vecadd -ferror-limit 19 -fno-signed-char -fgnuc-version=4.2.1 -vectorize-loops -vectorize-slp -target-feature +vortex -faddrsig -o /tmp/pocl_vortex_kernel_9J7cT7-3fb4b0.o -x c /tmp/pocl_vortex_kernel_9J7cT7.c
+clang -cc1 version 16.0.6 based upon LLVM 16.0.6 default target riscv32-unknown-elf
+ignoring duplicate directory "/scratch/nicolas.a.castaneda/build/llvm-vortex/lib/clang/16/include"
+#include "..." search starts here:
+#include <...> search starts here:
+ /home/eecs/nicolas.a.castaneda/vortex2/kernel/include
+ /scratch/nicolas.a.castaneda/build/pocl2/compiler/share/pocl/include
+ /scratch/nicolas.a.castaneda/build/llvm-vortex/lib/clang/16/include
+ /home/eecs/nicolas.a.castaneda/vortex-toolchain-prebuilt/riscv-gnu-toolchain/riscv32-unknown-elf/include
+End of search list.
+/tmp/pocl_vortex_kernel_9J7cT7.c:6:19: warning: passing 'const context_t *' to parameter of type 'context_t *' discards qualifiers [-Wincompatible-pointer-types-discards-qualifiers]
+  vx_spawn_kernel(ctx, (void*)_pocl_kernel_vecadd_workgroup, args);
+                  ^~~
+/home/eecs/nicolas.a.castaneda/vortex2/kernel/include/vx_spawn.h:48:34: note: passing argument to parameter 'ctx' here
+void vx_spawn_kernel(context_t * ctx, vx_spawn_kernel_cb callback, void * arg);
+                                 ^
+*** DivergenceTracker::initialize(): main
+*** divergent return variable: 
+
+After divergence analysis on main:
+
+           entry:
+DIVERGENT:       tail call void @vx_spawn_kernel(ptr noundef nonnull inttoptr (i32 2147418112 to ptr), ptr noundef nonnull @_pocl_kernel_vecadd_workgroup, ptr noundef nonnull inttoptr (i32 2147418164 to ptr)) #2
+                 ret i32 0
+
+*** Vortex Divergent Branch Handling Pass0 ***
+*** before Pass0 changes!
+; Function Attrs: nounwind
+define dso_local i32 @main() local_unnamed_addr #0 {
+entry:
+  tail call void @vx_spawn_kernel(ptr noundef nonnull inttoptr (i32 2147418112 to ptr), ptr noundef nonnull @_pocl_kernel_vecadd_workgroup, ptr noundef nonnull inttoptr (i32 2147418164 to ptr)) #2
+  ret i32 0
+}
+
+*** DivergenceTracker::initialize(): main
+*** divergent return variable: 
+
+After divergence analysis on main:
+
+           entry:
+DIVERGENT:       tail call void @vx_spawn_kernel(ptr noundef nonnull inttoptr (i32 2147418112 to ptr), ptr noundef nonnull @_pocl_kernel_vecadd_workgroup, ptr noundef nonnull inttoptr (i32 2147418164 to ptr)) #2
+                 ret i32 0
+
+*** DivergenceTracker::initialize(): main
+*** divergent return variable: 
+
+After divergence analysis on main:
+
+           entry:
+DIVERGENT:       tail call void @vx_spawn_kernel(ptr noundef nonnull inttoptr (i32 2147418112 to ptr), ptr noundef nonnull @_pocl_kernel_vecadd_workgroup, ptr noundef nonnull inttoptr (i32 2147418164 to ptr)) #2
+                 ret i32 0
+
+*** DivergenceTracker::initialize(): main
+*** divergent return variable: 
+
+After divergence analysis on main:
+
+           entry:
+DIVERGENT:       tail call void @vx_spawn_kernel(ptr noundef nonnull inttoptr (i32 2147418112 to ptr), ptr noundef nonnull @_pocl_kernel_vecadd_workgroup, ptr noundef nonnull inttoptr (i32 2147418164 to ptr)) #2
+                 ret i32 0
+
+*** Vortex Divergent Branch Handling ***
+*** Region info:
+[0] entry => <Function Return>
+
+VORTEX Intrinsic Func pass 
+1 warning generated.
+ "/home/eecs/nicolas.a.castaneda/vortex-toolchain-prebuilt/riscv-gnu-toolchain/lib/gcc/riscv32-unknown-elf/12.2.0/../../../../bin/riscv32-unknown-elf-ld" --sysroot=/home/eecs/nicolas.a.castaneda/vortex-toolchain-prebuilt/riscv-gnu-toolchain/riscv32-unknown-elf -m elf32lriscv -X /tmp/pocl_vortex_kernel_9J7cT7-3fb4b0.o /home/eecs/nicolas.a.castaneda/.cache/pocl/kcache/tempfile_07WqB9.so.o -Bstatic --gc-sections -T/home/eecs/nicolas.a.castaneda/vortex2/kernel/linker/vx_link32.ld --defsym=STARTUP_ADDR=0x80000000 /home/eecs/nicolas.a.castaneda/vortex2/kernel/libvortexrt.a -lm -L/home/eecs/nicolas.a.castaneda/vortex-toolchain-prebuilt/riscv-gnu-toolchain/lib/gcc/riscv32-unknown-elf/12.2.0 -L/home/eecs/nicolas.a.castaneda/vortex-toolchain-prebuilt/riscv-gnu-toolchain/riscv32-unknown-elf/lib --start-group -lc -lgloss --end-group -lgcc -o vecadd.bin_YiZGw5.elf
+[2024-04-22 22:34:45.983468737] POCL: in fn int pocl_llvm_build_vortex_program(cl_kernel, unsigned int, cl_device_id, const char*, const char*, char*) at line 197:
+  *** INFO ***  |      LLVM |  running "/scratch/nicolas.a.castaneda/build/llvm-vortex/bin/llvm-objcopy -O binary vecadd.bin_YiZGw5.elf /home/eecs/nicolas.a.castaneda/.cache/pocl/kcache/LC/GBGPBFMNDJDMBBBLBDOEKIFEMMAACFDCFMIKM/vecadd/0-0-0-goffs0/vecadd.bin"
+[2024-04-22 22:34:46.001418764] POCL: in fn int pocl_llvm_build_vortex_program(cl_kernel, unsigned int, cl_device_id, const char*, const char*, char*) at line 213:
+  *** INFO ***  |      LLVM |  running "/scratch/nicolas.a.castaneda/build/llvm-vortex/bin/llvm-objdump -D vecadd.bin_YiZGw5.elf > vecadd.dump"
+[2024-04-22 22:34:46.198707393] POCL: in fn llvm_codegen at line 616:
+  *** INFO ***  |    TIMING |       >>>       695.589  ms    API: llvm_codegen
+[2024-04-22 22:34:46.198725082] POCL: in fn pocl_check_kernel_disk_cache at line 1326:
+  *** INFO ***  |   GENERAL |  Built a specialized WG function: /home/eecs/nicolas.a.castaneda/.cache/pocl/kcache/LC/GBGPBFMNDJDMBBBLBDOEKIFEMMAACFDCFMIKM/vecadd/0-0-0-goffs0/vecadd.bin
+[2024-04-22 22:34:46.198762610] POCL: in fn pocl_binary_get_device_id at line 257:
+  *** INFO ***  |   GENERAL |  Device build hash:  vortex-riscv32-unknown-unknown-elf
+[2024-04-22 22:34:46.198767979] POCL: in fn pocl_binary_serialize at line 735:
+  *** INFO ***  |   GENERAL |  serializing kernel binary: /home/eecs/nicolas.a.castaneda/.cache/pocl/kcache/LC/GBGPBFMNDJDMBBBLBDOEKIFEMMAACFDCFMIKM/vecadd/0-0-0/vecadd.bin
+[2024-04-22 22:34:46.202199210] POCL: in fn serialize_kernel_cachedir at line 391:
+  *** INFO ***  |   GENERAL |  Kernel vecadd: recur serializing cachedir /home/eecs/nicolas.a.castaneda/.cache/pocl/kcache/LC/GBGPBFMNDJDMBBBLBDOEKIFEMMAACFDCFMIKM/vecadd
+[2024-04-22 22:34:46.216228005] POCL: in fn POclReleaseProgram at line 50:
+  *** INFO ***  | REFCOUNTS |  Release Program 4 (0x55822523ee90), Refcount: 0, Kernel #: 1 
+[2024-04-22 22:34:46.216238037] POCL: in fn POclReleaseProgram at line 61:
+  *** INFO ***  | REFCOUNTS |  Free Program 4 (0x55822523ee90)
+[2024-04-22 22:34:46.216418155] POCL: in fn POclReleaseContext at line 49:
+  *** INFO ***  | REFCOUNTS |  Release Context 2 (0x55822523bfc0), Refcount: 1
+[2024-04-22 22:34:46.216421534] POCL: in fn POclReleaseContext at line 49:
+  *** INFO ***  | REFCOUNTS |  Release Context 2 (0x55822523bfc0), Refcount: 0
+[2024-04-22 22:34:46.216423712] POCL: in fn POclReleaseContext at line 59:
+  *** INFO ***  | REFCOUNTS |  Free Context 2 (0x55822523bfc0)
+[2024-04-22 22:34:46.216426244] POCL: in fn POclReleaseCommandQueue at line 41:
+  *** INFO ***  | REFCOUNTS |  Release Command Queue 3 (0x55822523cc00), Refcount: 0
+[2024-04-22 22:34:46.216428705] POCL: in fn POclReleaseCommandQueue at line 64:
+  *** INFO ***  | REFCOUNTS |  Free Command Queue 3 (0x55822523cc00)
+[2024-04-22 22:34:46.216431602] POCL: in fn void pocl_llvm_release_context(cl_context) at line 441:
+  *** INFO ***  |      LLVM |  releasing LLVM context

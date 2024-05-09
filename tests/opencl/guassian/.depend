@@ -1,0 +1,14 @@
+main.o: main.cc gaussianElim.h clutils.h \
+ /scratch/nicolas.a.castaneda/build/pocl2/runtime/include/CL/cl.h \
+ /scratch/nicolas.a.castaneda/build/pocl2/runtime/include/CL/cl_version.h \
+ /scratch/nicolas.a.castaneda/build/pocl2/runtime/include/CL/cl_platform.h \
+ /scratch/nicolas.a.castaneda/build/pocl2/runtime/include/CL/opencl.h \
+ /scratch/nicolas.a.castaneda/build/pocl2/runtime/include/CL/cl_gl.h \
+ /scratch/nicolas.a.castaneda/build/pocl2/runtime/include/CL/cl_ext.h \
+ /scratch/nicolas.a.castaneda/build/pocl2/runtime/include/CL/cl_ext_pocl.h
+clutils.o: clutils.cpp \
+ /scratch/nicolas.a.castaneda/build/pocl2/runtime/include/CL/cl.h \
+ /scratch/nicolas.a.castaneda/build/pocl2/runtime/include/CL/cl_version.h \
+ /scratch/nicolas.a.castaneda/build/pocl2/runtime/include/CL/cl_platform.h \
+ clutils.h utils.h
+utils.o: utils.cpp utils.h

@@ -1,5 +1,5 @@
 XLEN ?= 32
-TOOLDIR ?= /opt
+TOOLDIR ?= /home/eecs/nicolas.a.castaneda/vortex-toolchain-prebuilt
 
 TARGET ?= opaesim
 
@@ -29,8 +29,8 @@ VORTEX_KN_PATH ?= $(realpath ../../../kernel)
 
 FPGA_BIN_DIR ?= $(VORTEX_RT_PATH)/opae
 
-LLVM_VORTEX ?= $(TOOLDIR)/llvm-vortex
-LLVM_POCL ?= $(TOOLDIR)/llvm-vortex
+LLVM_VORTEX ?= /scratch/nicolas.a.castaneda/build/llvm-vortex
+LLVM_POCL ?= /scratch/nicolas.a.castaneda/build/llvm-vortex
 
 K_CFLAGS   += -v -O3 --sysroot=$(RISCV_SYSROOT) --gcc-toolchain=$(RISCV_TOOLCHAIN_PATH) -Xclang -target-feature -Xclang +vortex
 K_CFLAGS   += -fno-rtti -fno-exceptions -nostartfiles -fdata-sections -ffunction-sections
@@ -113,7 +113,7 @@ clean:
 	rm -rf $(PROJECT) *.o .depend
 
 clean-all: clean
-	rm -rf *.dump *.pocl
+	rm -rf *.dump *.pocl *.elf
 
 ifneq ($(MAKECMDGOALS),clean)
     -include .depend
